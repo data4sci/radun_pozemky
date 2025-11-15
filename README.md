@@ -44,8 +44,8 @@ npm run preview
 
 ### Pridani nove nabidky
 
-1. Vytvorte novy YAML soubor v `content/offers/radun-XX.yaml`
-2. Pridejte obrazky do `public/images/plots/radun-XX/`
+1. Vytvorte novy YAML soubor v `content/offers/X-N.yaml`
+2. Pridejte obrazky do `public/images/plots/X-N/`
 3. Commit a push -> automaticky deploy
 
 ### Zmena stavu nabidky
@@ -67,7 +67,8 @@ npm run preview
 - Svetly/tmavy rezim
 - Responzivni design
 - SEO optimalizace (meta tagy, sitemap)
-- Staticka mapa s vyznacenymi pozemky
+- Staticka mapa s vyznacenymi pozemky (lightbox zvetseni)
+- Galerie obrazku s lightboxem a klavesovou navigaci
 - Stavove badge (Sleva, Rezervovano, Prodano)
 - LLMs.txt pro AI vyhledavace
 
@@ -78,9 +79,9 @@ npm run preview
 /cs/                        -> Ceska homepage
 /en/                        -> Anglicka homepage
 /pl/                        -> Polska homepage
-/cs/nabidka/[slug]/         -> Detail v cestine
+/cs/offer/[slug]/           -> Detail v cestine
 /en/offer/[slug]/           -> Detail v anglictine
-/pl/oferta/[slug]/          -> Detail v polstine
+/pl/offer/[slug]/           -> Detail v polstine
 ```
 
 ## Licence
