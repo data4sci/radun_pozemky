@@ -51,6 +51,8 @@ features:
 
 images:
   - /images/plots/A-1/main.svg
+  - /images/plots/A-1/view.svg
+  - /images/plots/A-1/surroundings.svg
 
 contact: default
 

@@ -51,6 +51,8 @@ features:
 
 images:
   - /images/plots/D-4/main.svg
+  - /images/plots/D-4/view.svg
+  - /images/plots/D-4/road.svg
 
 contact: default
 

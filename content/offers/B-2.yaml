@@ -50,6 +50,8 @@ features:
 
 images:
   - /images/plots/B-2/main.svg
+  - /images/plots/B-2/view.svg
+  - /images/plots/B-2/stream.svg
 
 contact: default
 

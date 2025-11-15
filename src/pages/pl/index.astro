@@ -31,18 +31,70 @@ const offers = getActiveOffers();
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center">
         <img
+          id="map-image"
           src={global.map.image}
           alt={global.map.alt[lang]}
-          class="max-w-full h-auto mx-auto rounded-lg shadow-md"
+          class="max-w-full h-auto mx-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-opacity"
           width={global.map.width}
           height={global.map.height}
+          title="Kliknij, aby powiększyć"
         />
         <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
-          {global.map.alt[lang]}
+          {global.map.alt[lang]} <span class="text-xs">(kliknij, aby powiększyć)</span>
         </p>
       </div>
     </div>
   </section>
+
+  <!-- Map Lightbox -->
+  <div id="map-lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+    <button
+      id="map-lightbox-close"
+      class="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+      aria-label="Zamknij"
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img
+      id="map-lightbox-image"
+      src={global.map.image}
+      alt={global.map.alt[lang]}
+      class="max-w-full max-h-full object-contain"
+    />
+  </div>
+
+  <script>
+    const mapImage = document.getElementById('map-image');
+    const mapLightbox = document.getElementById('map-lightbox');
+    const mapLightboxClose = document.getElementById('map-lightbox-close');
+
+    if (mapImage && mapLightbox && mapLightboxClose) {
+      mapImage.addEventListener('click', () => {
+        mapLightbox.classList.remove('hidden');
+        mapLightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      });
+
+      const closeLightbox = () => {
+        mapLightbox.classList.add('hidden');
+        mapLightbox.classList.remove('flex');
+        document.body.style.overflow = '';
+      };
+
+      mapLightboxClose.addEventListener('click', closeLightbox);
+      mapLightbox.addEventListener('click', (e) => {
+        if (e.target === mapLightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mapLightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+    }
+  </script>
 
   <!-- About Raduň Section -->
   <section class="py-16 bg-gray-50 dark:bg-gray-800">

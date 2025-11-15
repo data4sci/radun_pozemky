@@ -49,6 +49,8 @@ features:
 
 images:
   - /images/plots/C-3/main.svg
+  - /images/plots/C-3/view.svg
+  - /images/plots/C-3/hillside.svg
 
 contact: default
 
