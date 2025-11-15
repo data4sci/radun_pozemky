@@ -13,34 +13,42 @@ const { lang, currentPath, offerSlugs } = Astro.props;
 const global = loadGlobalConfig();
 ---
 
-<header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
+<header class="bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-800/50 sticky top-0 z-50 transition-colors duration-200">
+  <div class="container-wide">
+    <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo/Site Name -->
-      <a href={`/${lang}/`} class="flex items-center space-x-2">
-        <span class="text-2xl font-serif font-bold text-primary dark:text-primary-dark">
-          Pozemky Raduň
+      <a
+        href={`/${lang}/`}
+        class="flex items-center gap-2 group"
+      >
+        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center group-hover:bg-primary-700 transition-colors">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </div>
+        <span class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+          Pozemky Radun
         </span>
       </a>
 
-      <!-- Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
         <a
           href={`/${lang}/`}
-          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+          class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
         >
           {t('nav.home', lang)}
         </a>
         <a
           href={`/${lang}/#offers`}
-          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+          class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
         >
           {t('nav.offers', lang)}
         </a>
         <!-- Contact link - HIDDEN, kept for future use
         <a
           href={`/${lang}/#contact`}
-          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+          class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
         >
           {t('nav.contact', lang)}
         </a>
@@ -48,18 +56,21 @@ const global = loadGlobalConfig();
       </nav>
 
       <!-- Controls -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center gap-2">
         <LanguageSwitcher lang={lang} currentPath={currentPath} offerSlugs={offerSlugs} />
         <ThemeToggle lang={lang} />
 
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-button"
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+          class="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
           aria-label="Menu"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -67,24 +78,27 @@ const global = loadGlobalConfig();
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
-    <div class="px-4 py-3 space-y-3">
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800"
+  >
+    <div class="container-wide py-4 space-y-1">
       <a
         href={`/${lang}/`}
-        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+        class="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-colors"
       >
         {t('nav.home', lang)}
       </a>
       <a
         href={`/${lang}/#offers`}
-        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+        class="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-colors"
       >
         {t('nav.offers', lang)}
       </a>
       <!-- Contact link - HIDDEN, kept for future use
       <a
         href={`/${lang}/#contact`}
-        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+        class="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-colors"
       >
         {t('nav.contact', lang)}
       </a>
@@ -96,8 +110,28 @@ const global = loadGlobalConfig();
 <script>
   const menuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpenIcon = document.getElementById('menu-open-icon');
+  const menuCloseIcon = document.getElementById('menu-close-icon');
+
+  let isOpen = false;
 
   menuButton?.addEventListener('click', () => {
+    isOpen = !isOpen;
     mobileMenu?.classList.toggle('hidden');
+    menuOpenIcon?.classList.toggle('hidden');
+    menuCloseIcon?.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) {
+        isOpen = false;
+        mobileMenu?.classList.add('hidden');
+        menuOpenIcon?.classList.remove('hidden');
+        menuCloseIcon?.classList.add('hidden');
+      }
+    });
   });
 </script>

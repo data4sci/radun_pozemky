@@ -1,0 +1,55 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  containerClass?: string;
+  size?: 'narrow' | 'wide' | 'full';
+  background?: 'default' | 'muted' | 'primary' | 'gradient';
+  padding?: 'sm' | 'md' | 'lg';
+}
+
+const {
+  id,
+  class: className = '',
+  containerClass = '',
+  size = 'wide',
+  background = 'default',
+  padding = 'md'
+} = Astro.props;
+
+const bgClasses = {
+  default: 'bg-white dark:bg-gray-950',
+  muted: 'bg-gray-50 dark:bg-gray-900',
+  primary: 'bg-primary-50 dark:bg-primary-900/10',
+  gradient: 'bg-gradient-to-br from-primary-50 via-white to-primary-50/50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900'
+};
+
+const paddingClasses = {
+  sm: 'section-sm',
+  md: 'section',
+  lg: 'section-lg'
+};
+
+const containerClasses = {
+  narrow: 'container-narrow',
+  wide: 'container-wide',
+  full: ''
+};
+---
+
+<section
+  id={id}
+  class:list={[
+    bgClasses[background],
+    paddingClasses[padding],
+    className
+  ]}
+>
+  {size === 'full' ? (
+    <slot />
+  ) : (
+    <div class:list={[containerClasses[size], containerClass]}>
+      <slot />
+    </div>
+  )}
+</section>

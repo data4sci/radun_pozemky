@@ -1,7 +1,11 @@
 ---
 import Layout from '../../../components/Layout.astro';
+import Section from '../../../components/Section.astro';
+import Badge from '../../../components/Badge.astro';
+import Button from '../../../components/Button.astro';
 import ContactBox from '../../../components/ContactBox.astro';
 import ImageGallery from '../../../components/ImageGallery.astro';
+import FeatureItem from '../../../components/FeatureItem.astro';
 import { t, formatPrice, type Language } from '../../../utils/i18n';
 import { getAllOffers, type Offer } from '../../../utils/offers';
 
@@ -25,17 +29,17 @@ const statusBadge = () => {
     case 'discounted':
       return {
         text: `${t('status.discounted', lang)} -${offer.discount.percentage}%`,
-        class: 'badge-discount'
+        variant: 'discount' as const
       };
     case 'reserved':
       return {
         text: t('status.reserved', lang),
-        class: 'badge-reserved'
+        variant: 'reserved' as const
       };
     case 'inactive':
       return {
         text: t('status.inactive', lang),
-        class: 'badge-sold'
+        variant: 'sold' as const
       };
     default:
       return null;
@@ -51,109 +55,121 @@ const badge = statusBadge();
   lang={lang}
   offerSlugs={offer.slug}
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <a
-      href={`/${lang}/`}
-      class="inline-flex items-center text-primary dark:text-primary-dark hover:underline mb-6"
-    >
-      {t('nav.back_to_offers', lang)}
-    </a>
+  <Section background="default" padding="sm">
+    <div class="mb-8">
+      <a
+        href={`/${lang}/`}
+        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        {t('nav.back_to_offers', lang)}
+      </a>
+    </div>
 
     {offer.status === 'inactive' && (
-      <div class="bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg p-4 mb-6">
-        <p class="text-red-800 dark:text-red-300 font-semibold">
-          {t('offer.not_available', lang)}
-        </p>
+      <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4 mb-8">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <p class="text-red-800 dark:text-red-300 font-medium">
+            {t('offer.not_available', lang)}
+          </p>
+        </div>
       </div>
     )}
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div class="lg:col-span-2">
-        <div class="flex items-start justify-between mb-6">
-          <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+      <!-- Main content -->
+      <div class="lg:col-span-2 space-y-8">
+        <!-- Title and badge -->
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             {offer.title[lang]}
           </h1>
           {badge && (
-            <span class={`badge ${badge.class} text-base`}>
+            <Badge variant={badge.variant}>
               {badge.text}
-            </span>
+            </Badge>
           )}
         </div>
 
-        <div class="mb-8">
-          <ImageGallery images={offer.images} alt={offer.title[lang]} />
+        <!-- Gallery -->
+        <ImageGallery images={offer.images} alt={offer.title[lang]} />
+
+        <!-- Description -->
+        <div class="card p-6 md:p-8">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Opis</h2>
+          <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+            {offer.description[lang].split('\n').map((paragraph) => (
+              paragraph.trim() && <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
+            ))}
+          </div>
         </div>
 
-        <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
-          {offer.description[lang].split('\n').map((paragraph) => (
-            paragraph.trim() && <p>{paragraph.trim()}</p>
-          ))}
-        </div>
-
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-          <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+        <!-- Features -->
+        <div class="card p-6 md:p-8">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
             {t('features.utilities', lang)}
-          </h3>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-2">
-                {t('features.utilities', lang)}:
-              </h4>
-              <ul class="space-y-1">
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Sieci inzynierskie
+              </h3>
+              <div class="space-y-3">
                 {offer.features.utilities.map((utility) => (
-                  <li class="flex items-center text-gray-600 dark:text-gray-400">
-                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {t(`features.${utility}`, lang)}
-                  </li>
+                  <FeatureItem icon="check" label={t(`features.${utility}`, lang)} />
                 ))}
-              </ul>
-            </div>
-            <div class="space-y-3">
-              <div>
-                <span class="font-medium text-gray-700 dark:text-gray-300">
-                  {t('features.access', lang)}:
-                </span>
-                <span class="text-gray-600 dark:text-gray-400 ml-2">
-                  {t(`features.${offer.features.access}`, lang)}
-                </span>
               </div>
-              <div>
-                <span class="font-medium text-gray-700 dark:text-gray-300">
-                  {t('features.zoning', lang)}:
-                </span>
-                <span class="text-gray-600 dark:text-gray-400 ml-2">
-                  {t(`features.${offer.features.zoning}`, lang)}
-                </span>
+            </div>
+            <div class="space-y-4">
+              <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Dodatkowe informacje
+              </h3>
+              <div class="space-y-3">
+                <FeatureItem
+                  icon="road"
+                  label={t('features.access', lang)}
+                  value={t(`features.${offer.features.access}`, lang)}
+                />
+                <FeatureItem
+                  icon="zoning"
+                  label={t('features.zoning', lang)}
+                  value={t(`features.${offer.features.zoning}`, lang)}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Sidebar -->
       <div class="lg:col-span-1">
         <div class="sticky top-24 space-y-6">
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+          <!-- Price box -->
+          <div class="card p-6">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Podsumowanie</h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
-                <span class="text-gray-600 dark:text-gray-400">{t('offer.size', lang)}:</span>
+                <span class="text-gray-600 dark:text-gray-400">{t('offer.size', lang)}</span>
                 <span class="font-semibold text-gray-900 dark:text-white">
                   {offer.size_sqm.toLocaleString('cs-CZ')} m²
                 </span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-gray-600 dark:text-gray-400">{t('offer.price_per_sqm', lang)}:</span>
+                <span class="text-gray-600 dark:text-gray-400">{t('offer.price_per_sqm', lang)}</span>
                 <span class="font-semibold text-gray-900 dark:text-white">
                   {formatPrice(offer.price_per_sqm, lang)}
                 </span>
               </div>
-              <hr class="dark:border-gray-700" />
-              <div>
-                <div class="text-gray-600 dark:text-gray-400 mb-2">{t('offer.total_price', lang)}:</div>
+              <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">{t('offer.total_price', lang)}</div>
                 {offer.discount.active && offer.discount.old_price_total ? (
                   <div>
-                    <span class="text-gray-500 line-through block">
+                    <span class="text-gray-400 line-through text-sm block">
                       {formatPrice(offer.discount.old_price_total, lang)}
                     </span>
                     <span class="text-3xl font-bold text-red-600 dark:text-red-400">
@@ -161,7 +177,7 @@ const badge = statusBadge();
                     </span>
                   </div>
                 ) : (
-                  <span class="text-3xl font-bold text-primary dark:text-primary-dark">
+                  <span class="text-3xl font-bold text-primary-600 dark:text-primary-400">
                     {formatPrice(offer.price_total, lang)}
                   </span>
                 )}
@@ -169,9 +185,18 @@ const badge = statusBadge();
             </div>
           </div>
 
+          <!-- Contact box -->
           <ContactBox lang={lang} contactId={offer.contact} />
+
+          <!-- Back button -->
+          <Button href={`/${lang}/#offers`} variant="secondary" fullWidth>
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Zobacz wiecej ofert
+          </Button>
         </div>
       </div>
     </div>
-  </div>
+  </Section>
 </Layout>

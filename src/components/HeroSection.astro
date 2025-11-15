@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  primaryCta?: {
+    text: string;
+    href: string;
+  };
+  secondaryCta?: {
+    text: string;
+    href: string;
+  };
+}
+
+const { title, subtitle, description, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-emerald-50/30 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary-100/50 dark:bg-primary-900/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-100/50 dark:bg-emerald-900/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative container-wide py-20 md:py-28 lg:py-32">
+    <div class="max-w-4xl mx-auto text-center">
+      {subtitle && (
+        <p class="text-sm md:text-base font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-4 animate-in">
+          {subtitle}
+        </p>
+      )}
+
+      <h1 class="text-balance text-gray-900 dark:text-white mb-6 slide-in">
+        {title}
+      </h1>
+
+      {description && (
+        <p class="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed animate-in">
+          {description}
+        </p>
+      )}
+
+      {(primaryCta || secondaryCta) && (
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 slide-in">
+          {primaryCta && (
+            <a
+              href={primaryCta.href}
+              class="btn btn-primary btn-lg min-w-[200px]"
+            >
+              {primaryCta.text}
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          )}
+          {secondaryCta && (
+            <a
+              href={secondaryCta.href}
+              class="btn btn-ghost btn-lg min-w-[200px]"
+            >
+              {secondaryCta.text}
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
+</section>

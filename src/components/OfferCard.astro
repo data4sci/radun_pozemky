@@ -1,6 +1,8 @@
 ---
 import { t, formatPrice, offerPathSegment, type Language } from '../utils/i18n';
 import type { Offer } from '../utils/offers';
+import Badge from './Badge.astro';
+import Button from './Button.astro';
 
 interface Props {
   offer: Offer;
@@ -14,17 +16,17 @@ const statusBadge = () => {
     case 'discounted':
       return {
         text: `${t('status.discounted', lang)} -${offer.discount.percentage}%`,
-        class: 'badge-discount'
+        variant: 'discount' as const
       };
     case 'reserved':
       return {
         text: t('status.reserved', lang),
-        class: 'badge-reserved'
+        variant: 'reserved' as const
       };
     case 'inactive':
       return {
         text: t('status.inactive', lang),
-        class: 'badge-sold'
+        variant: 'sold' as const
       };
     default:
       return null;
@@ -36,14 +38,19 @@ const detailUrl = `/${lang}/${offerPathSegment[lang]}/${offer.slug[lang]}/`;
 const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'inactive';
 ---
 
-<article class={`card ${isReservedOrInactive ? 'opacity-75' : ''}`}>
+<article
+  class:list={[
+    'card card-hover group',
+    isReservedOrInactive && 'opacity-60'
+  ]}
+>
   <!-- Image -->
-  <div class="relative h-48 bg-gray-200 dark:bg-gray-700">
+  <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden">
     {offer.images[0] ? (
       <img
         src={offer.images[0]}
         alt={offer.title[lang]}
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
       />
     ) : (
@@ -55,53 +62,80 @@ const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'in
     )}
 
     {badge && (
-      <div class={`absolute top-3 right-3 badge ${badge.class}`}>
-        {badge.text}
+      <div class="absolute top-4 right-4">
+        <Badge variant={badge.variant}>
+          {badge.text}
+        </Badge>
       </div>
     )}
+
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   </div>
 
   <!-- Content -->
-  <div class="p-5">
-    <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+  <div class="p-6">
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 line-clamp-2">
       {offer.title[lang]}
     </h3>
 
-    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-      <div class="flex justify-between">
-        <span>{t('offer.size', lang)}:</span>
-        <span class="font-medium">{offer.size_sqm.toLocaleString('cs-CZ')} m²</span>
+    <!-- Stats -->
+    <div class="space-y-3 mb-6">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+          {t('offer.size', lang)}
+        </span>
+        <span class="font-semibold text-gray-900 dark:text-white">
+          {offer.size_sqm.toLocaleString('cs-CZ')} m²
+        </span>
       </div>
-      <div class="flex justify-between">
-        <span>{t('offer.price_per_sqm', lang)}:</span>
-        <span class="font-medium">{formatPrice(offer.price_per_sqm, lang)}</span>
+
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+          {t('offer.price_per_sqm', lang)}
+        </span>
+        <span class="font-semibold text-gray-900 dark:text-white">
+          {formatPrice(offer.price_per_sqm, lang)}
+        </span>
       </div>
     </div>
 
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+
     <!-- Price -->
-    <div class="mb-4">
+    <div class="mb-6">
+      <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+        {t('offer.total_price', lang)}
+      </div>
       {offer.discount.active && offer.discount.old_price_total ? (
         <div>
-          <span class="text-gray-500 line-through text-sm">
+          <span class="text-gray-400 line-through text-sm block">
             {formatPrice(offer.discount.old_price_total, lang)}
           </span>
-          <div class="text-xl font-bold text-red-600 dark:text-red-400">
+          <div class="text-2xl font-bold text-red-600 dark:text-red-400">
             {formatPrice(offer.price_total, lang)}
           </div>
         </div>
       ) : (
-        <div class="text-xl font-bold text-primary dark:text-primary-dark">
+        <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">
           {formatPrice(offer.price_total, lang)}
         </div>
       )}
     </div>
 
     <!-- CTA -->
-    <a
-      href={detailUrl}
-      class="block w-full text-center btn-secondary"
-    >
+    <Button href={detailUrl} variant="primary" fullWidth>
       {t('offer.view_details', lang)}
-    </a>
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </Button>
   </div>
 </article>

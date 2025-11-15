@@ -1,7 +1,8 @@
 ---
 import Layout from '../../components/Layout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import Section from '../../components/Section.astro';
 import OfferCard from '../../components/OfferCard.astro';
-import ContactBox from '../../components/ContactBox.astro';
 import { t, loadGlobalConfig, type Language } from '../../utils/i18n';
 import { getActiveOffers } from '../../utils/offers';
 
@@ -12,48 +13,59 @@ const offers = getActiveOffers();
 
 <Layout lang={lang}>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-gray-800 dark:to-gray-900 py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
-        Pozemky Raduň
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
-        {global.site.hero_claim[lang]}
-      </p>
-      <a href="#offers" class="btn-primary text-lg">
-        {t('general.cta_view_offers', lang)}
-      </a>
-    </div>
-  </section>
+  <HeroSection
+    title="Pozemky Radun"
+    subtitle="Stavebni pozemky v Raduni"
+    description={global.site.hero_claim[lang]}
+    primaryCta={{
+      text: t('general.cta_view_offers', lang),
+      href: '#offers'
+    }}
+    secondaryCta={{
+      text: t('general.about_village', lang),
+      href: '#about'
+    }}
+  />
 
   <!-- Map Section -->
-  <section class="py-16 bg-white dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center">
+  <Section background="default" padding="lg">
+    <div class="text-center mb-12">
+      <h2 class="text-gray-900 dark:text-white mb-4">Mapa pozemku</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Prohlednete si rozmisteni jednotlivych pozemku v lokalite
+      </p>
+    </div>
+
+    <div class="card p-6 max-w-5xl mx-auto">
+      <div class="relative group cursor-pointer" id="map-container">
         <img
           id="map-image"
           src={global.map.image}
           alt={global.map.alt[lang]}
-          class="max-w-full h-auto mx-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-opacity"
+          class="w-full h-auto rounded-xl group-hover:opacity-95 transition-opacity"
           width={global.map.width}
           height={global.map.height}
-          title="Klikněte pro zvětšení"
         />
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
-          {global.map.alt[lang]} <span class="text-xs">(klikněte pro zvětšení)</span>
-        </p>
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+          <div class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-gray-900 dark:text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+            </svg>
+            <span>Kliknete pro zvetseni</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </Section>
 
   <!-- Map Lightbox -->
-  <div id="map-lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+  <div id="map-lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
     <button
       id="map-lightbox-close"
-      class="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
-      aria-label="Zavřít"
+      class="absolute top-4 right-4 p-2 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-all z-10"
+      aria-label="Zavrit"
     >
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
@@ -61,17 +73,17 @@ const offers = getActiveOffers();
       id="map-lightbox-image"
       src={global.map.image}
       alt={global.map.alt[lang]}
-      class="max-w-full max-h-full object-contain"
+      class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
     />
   </div>
 
   <script>
-    const mapImage = document.getElementById('map-image');
+    const mapContainer = document.getElementById('map-container');
     const mapLightbox = document.getElementById('map-lightbox');
     const mapLightboxClose = document.getElementById('map-lightbox-close');
 
-    if (mapImage && mapLightbox && mapLightboxClose) {
-      mapImage.addEventListener('click', () => {
+    if (mapContainer && mapLightbox && mapLightboxClose) {
+      mapContainer.addEventListener('click', () => {
         mapLightbox.classList.remove('hidden');
         mapLightbox.classList.add('flex');
         document.body.style.overflow = 'hidden';
@@ -96,49 +108,86 @@ const offers = getActiveOffers();
     }
   </script>
 
-  <!-- About Raduň Section -->
-  <section class="py-16 bg-gray-50 dark:bg-gray-800">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-serif font-bold text-center mb-8 text-gray-900 dark:text-white">
-        {t('general.about_village', lang)}
-      </h2>
-      <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
-        {global.site.about_radun[lang].split('\n').map((paragraph: string) => (
-          paragraph.trim() && <p>{paragraph.trim()}</p>
-        ))}
+  <!-- About Radun Section -->
+  <Section id="about" background="muted" padding="lg">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-gray-900 dark:text-white mb-4">
+          {t('general.about_village', lang)}
+        </h2>
+        <div class="w-24 h-1 bg-primary-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="card p-8 md:p-12">
+        <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+          {global.site.about_radun[lang].split('\n').map((paragraph: string) => (
+            paragraph.trim() && <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Klidna lokalita</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Nedaleko Opavy v klidne obci</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Kompletni site</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Vsechny inzenyrske site na hranici</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Transparentni ceny</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Zadne skryte poplatky</p>
+        </div>
       </div>
     </div>
-  </section>
+  </Section>
 
   <!-- Offers Section -->
-  <section id="offers" class="py-16 bg-white dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-serif font-bold text-center mb-12 text-gray-900 dark:text-white">
+  <Section id="offers" background="default" padding="lg">
+    <div class="text-center mb-12">
+      <h2 class="text-gray-900 dark:text-white mb-4">
         {t('nav.offers', lang)}
       </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Vyberte si z nasich stavebnich pozemku
+      </p>
+    </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {offers.map((offer) => (
-          <OfferCard offer={offer} lang={lang} />
-        ))}
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {offers.map((offer) => (
+        <OfferCard offer={offer} lang={lang} />
+      ))}
+    </div>
 
-      {offers.length === 0 && (
-        <div class="text-center py-12 text-gray-500 dark:text-gray-400">
-          <p>Žádné aktivní nabídky k dispozici.</p>
+    {offers.length === 0 && (
+      <div class="text-center py-16">
+        <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+          </svg>
         </div>
-      )}
-    </div>
-  </section>
-
-  <!-- Contact Section - HIDDEN, kept for future use
-  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-serif font-bold text-center mb-8 text-gray-900 dark:text-white">
-        {t('nav.contact', lang)}
-      </h2>
-      <ContactBox lang={lang} />
-    </div>
-  </section>
-  -->
+        <p class="text-gray-500 dark:text-gray-400">Zadne aktivni nabidky k dispozici.</p>
+      </div>
+    )}
+  </Section>
 </Layout>
