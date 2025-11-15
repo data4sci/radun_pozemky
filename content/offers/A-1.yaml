@@ -1,0 +1,58 @@
+id: A-1
+status: active
+featured: false
+
+slug:
+  cs: A-1
+  en: A-1
+  pl: A-1
+
+size_sqm: 850
+price_per_sqm: 2500
+price_total: 2125000
+
+discount:
+  active: false
+  percentage: 0
+  old_price_total: null
+
+map_position:
+  x: 150
+  y: 200
+  label: "A-1"
+
+title:
+  cs: Stavební pozemek u lesa
+  en: Building plot by the forest
+  pl: Działka budowlana przy lesie
+
+description:
+  cs: |
+    Krásný rovinatý pozemek o rozloze 850 m² na okraji obce Raduň.
+    Pozemek se nachází v klidné lokalitě s výhledem do přírody.
+    Veškeré inženýrské sítě jsou dostupné na hranici pozemku.
+  en: |
+    Beautiful flat plot of 850 m² at the edge of Raduň village.
+    The plot is located in a quiet area with nature views.
+    All utilities are available at the plot boundary.
+  pl: |
+    Piękna płaska działka o powierzchni 850 m² na skraju wsi Raduň.
+    Działka znajduje się w spokojnej okolicy z widokiem na przyrodę.
+    Wszystkie media dostępne przy granicy działki.
+
+features:
+  utilities:
+    - electricity
+    - water
+    - sewage
+    - gas
+  access: asphalt
+  zoning: residential
+
+images:
+  - /images/plots/A-1/main.svg
+
+contact: default
+
+created: "2025-01-01"
+updated: "2025-01-14"

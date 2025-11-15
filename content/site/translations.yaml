@@ -1,0 +1,141 @@
+nav:
+  home:
+    cs: Úvod
+    en: Home
+    pl: Start
+  offers:
+    cs: Nabídka pozemků
+    en: Land Offers
+    pl: Oferty działek
+  contact:
+    cs: Kontakt
+    en: Contact
+    pl: Kontakt
+  back_to_offers:
+    cs: "← Zpět na nabídku"
+    en: "← Back to offers"
+    pl: "← Wróć do ofert"
+
+status:
+  active:
+    cs: K dispozici
+    en: Available
+    pl: Dostępna
+  discounted:
+    cs: Sleva
+    en: Discount
+    pl: Promocja
+  reserved:
+    cs: Rezervováno
+    en: Reserved
+    pl: Zarezerwowana
+  inactive:
+    cs: Prodáno
+    en: Sold
+    pl: Sprzedana
+
+offer:
+  size:
+    cs: Velikost
+    en: Size
+    pl: Powierzchnia
+  price_per_sqm:
+    cs: Cena za m²
+    en: Price per m²
+    pl: Cena za m²
+  total_price:
+    cs: Celková cena
+    en: Total price
+    pl: Cena całkowita
+  view_details:
+    cs: Zobrazit detail
+    en: View details
+    pl: Zobacz szczegóły
+  contact_seller:
+    cs: Kontaktovat prodejce
+    en: Contact seller
+    pl: Skontaktuj się ze sprzedawcą
+  not_available:
+    cs: Nabídka již není aktivní
+    en: This offer is no longer available
+    pl: Ta oferta nie jest już dostępna
+
+features:
+  utilities:
+    cs: Inženýrské sítě
+    en: Utilities
+    pl: Media
+  electricity:
+    cs: Elektřina
+    en: Electricity
+    pl: Prąd
+  water:
+    cs: Voda
+    en: Water
+    pl: Woda
+  sewage:
+    cs: Kanalizace
+    en: Sewage
+    pl: Kanalizacja
+  gas:
+    cs: Plyn
+    en: Gas
+    pl: Gaz
+  access:
+    cs: Přístup
+    en: Access
+    pl: Dojazd
+  asphalt:
+    cs: Asfaltová cesta
+    en: Asphalt road
+    pl: Droga asfaltowa
+  gravel:
+    cs: Štěrková cesta
+    en: Gravel road
+    pl: Droga żwirowa
+  dirt:
+    cs: Polní cesta
+    en: Dirt road
+    pl: Droga gruntowa
+  zoning:
+    cs: Územní plán
+    en: Zoning
+    pl: Plan zagospodarowania
+  residential:
+    cs: Obytná zástavba
+    en: Residential
+    pl: Zabudowa mieszkaniowa
+  commercial:
+    cs: Komerční zástavba
+    en: Commercial
+    pl: Zabudowa komercyjna
+  mixed:
+    cs: Smíšená zástavba
+    en: Mixed use
+    pl: Zabudowa mieszana
+
+general:
+  language:
+    cs: Jazyk
+    en: Language
+    pl: Język
+  dark_mode:
+    cs: Tmavý režim
+    en: Dark mode
+    pl: Tryb ciemny
+  light_mode:
+    cs: Světlý režim
+    en: Light mode
+    pl: Tryb jasny
+  currency_format:
+    cs: "{price} Kč"
+    en: "CZK {price}"
+    pl: "{price} CZK"
+  cta_view_offers:
+    cs: Prohlédnout nabídku
+    en: View offers
+    pl: Zobacz oferty
+  about_village:
+    cs: O obci Raduň
+    en: About Raduň village
+    pl: O wsi Raduň

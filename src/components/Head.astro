@@ -1,0 +1,79 @@
+---
+import { loadGlobalConfig, type Language, type OfferSlugs, languages, getAlternateUrls } from '../utils/i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang: Language;
+  currentPath: string;
+  offerSlugs?: OfferSlugs;
+}
+
+const { title, description, image, lang, currentPath, offerSlugs } = Astro.props;
+
+const global = loadGlobalConfig();
+const siteTitle = global.site.title[lang];
+const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const pageDescription = description || global.site.hero_claim[lang];
+const ogImage = image || '/images/og-image.jpg';
+const siteUrl = global.site.url;
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+const alternateUrls = getAlternateUrls(currentPath, lang, offerSlugs);
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Alternate language versions -->
+{languages.map((l) => (
+  <link rel="alternate" hreflang={l} href={new URL(alternateUrls[l], siteUrl).href} />
+))}
+<link rel="alternate" hreflang="x-default" href={new URL('/cs/', siteUrl).href} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:image" content={new URL(ogImage, siteUrl).href} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : lang === 'en' ? 'en_US' : 'pl_PL'} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={new URL(ogImage, siteUrl).href} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+<!-- Dark mode script (inline to prevent flash) -->
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+  window.localStorage.setItem('theme', theme);
+</script>

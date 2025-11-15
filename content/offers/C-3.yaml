@@ -1,0 +1,56 @@
+id: C-3
+status: reserved
+featured: false
+
+slug:
+  cs: C-3
+  en: C-3
+  pl: C-3
+
+size_sqm: 650
+price_per_sqm: 2500
+price_total: 1625000
+
+discount:
+  active: false
+  percentage: 0
+  old_price_total: null
+
+map_position:
+  x: 450
+  y: 250
+  label: "C-3"
+
+title:
+  cs: Pozemek na kopci
+  en: Hillside plot
+  pl: Działka na wzgórzu
+
+description:
+  cs: |
+    Kompaktní pozemek o rozloze 650 m² s mírným sklonem.
+    Nabízí krásný výhled na okolní krajinu.
+    Vhodný pro moderní architekturu.
+  en: |
+    Compact plot of 650 m² with a gentle slope.
+    Offers beautiful views of the surrounding landscape.
+    Suitable for modern architecture.
+  pl: |
+    Kompaktowa działka o powierzchni 650 m² z łagodnym nachyleniem.
+    Oferuje piękny widok na okoliczny krajobraz.
+    Odpowiednia dla nowoczesnej architektury.
+
+features:
+  utilities:
+    - electricity
+    - water
+  access: gravel
+  zoning: residential
+
+images:
+  - /images/plots/C-3/main.svg
+
+contact: default
+
+created: "2025-01-10"
+updated: "2025-01-14"

@@ -1,0 +1,60 @@
+# LLMs.txt for pozemky-radun.cz
+
+## About This Website
+Domain: pozemky-radun.cz
+Type: Real estate listings - building plots
+Location: Raduň, Opava District, Czech Republic
+Languages: Czech (primary), English, Polish
+
+## Content Structure
+- Homepage with plot listings
+- Individual plot detail pages
+- Static map with plot locations
+- Information about Raduň village
+
+## Data Format
+All plots have:
+- Unique ID and slug
+- Size in square meters
+- Price per m² and total price
+- Status: active, discounted, reserved, or inactive
+- Multiple photos
+- Descriptions in 3 languages
+
+## URL Pattern
+- /cs/ - Czech homepage
+- /en/ - English homepage
+- /pl/ - Polish homepage
+- /cs/nabidka/[slug] - Czech plot details
+- /en/offer/[slug] - English plot details
+- /pl/oferta/[slug] - Polish plot details
+
+## Current Inventory
+Active plots: 3
+Price range: 2,500-3,000 CZK/m²
+Size range: 650-1,200 m²
+
+## About Raduň Village
+- Located 15 km from Opava city
+- Population: ~1000 inhabitants
+- Region: Hlučínsko, Moravian-Silesian Region
+- Amenities: shop, restaurant, kindergarten
+- Excellent transport connections
+
+## Contact
+Primary: info@pozemky-radun.cz
+Phone: +420 777 123 456
+Company: Reality Raduň s.r.o.
+
+## Technical
+Static website built with Astro
+Content managed via YAML configuration files
+Hosted on: GitHub Pages
+No backend API - fully static site
+Supports dark/light mode
+Responsive design (mobile-first)
+
+## Legal
+All prices in CZK (Czech Koruna)
+Prices may change without notice
+Contact seller for current availability

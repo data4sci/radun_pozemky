@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import Head from './Head.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import type { Language, OfferSlugs } from '../utils/i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang: Language;
+  offerSlugs?: OfferSlugs;
+}
+
+const { title, description, image, lang, offerSlugs } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <Head
+      title={title}
+      description={description}
+      image={image}
+      lang={lang}
+      currentPath={currentPath}
+      offerSlugs={offerSlugs}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header lang={lang} currentPath={currentPath} offerSlugs={offerSlugs} />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#c8e6c9"/>
+  <rect x="100" y="100" width="600" height="400" fill="#81c784" stroke="#2e7d32" stroke-width="4"/>
+  <text x="400" y="280" font-family="sans-serif" font-size="36" fill="#1b5e20" text-anchor="middle" font-weight="bold">Pozemek u lesa</text>
+  <text x="400" y="340" font-family="sans-serif" font-size="24" fill="#2e7d32" text-anchor="middle">850 m²</text>
+  <text x="400" y="380" font-family="sans-serif" font-size="20" fill="#388e3c" text-anchor="middle">Plot by forest</text>
+</svg>

@@ -1,0 +1,56 @@
+---
+import { languages, languageNames, getAlternateUrls, type Language, type OfferSlugs } from '../utils/i18n';
+
+interface Props {
+  lang: Language;
+  currentPath: string;
+  offerSlugs?: OfferSlugs;
+}
+
+const { lang, currentPath, offerSlugs } = Astro.props;
+const alternateUrls = getAlternateUrls(currentPath, lang, offerSlugs);
+---
+
+<div class="relative" id="language-switcher">
+  <button
+    id="language-button"
+    class="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+    aria-label="Select language"
+  >
+    <span class="text-sm font-medium uppercase">{lang}</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div
+    id="language-dropdown"
+    class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 py-2 z-50"
+  >
+    {languages.map((l) => (
+      <a
+        href={alternateUrls[l]}
+        class={`block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+          l === lang ? 'font-semibold text-primary dark:text-primary-dark' : 'text-gray-700 dark:text-gray-300'
+        }`}
+      >
+        <span class="uppercase mr-2">{l}</span>
+        {languageNames[l]}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('language-button');
+  const dropdown = document.getElementById('language-dropdown');
+
+  button?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown?.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', () => {
+    dropdown?.classList.add('hidden');
+  });
+</script>

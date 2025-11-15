@@ -1,0 +1,19 @@
+contacts:
+  default:
+    name: Jan Novák
+    company: Reality Raduň s.r.o.
+    role:
+      cs: Prodejce
+      en: Sales Agent
+      pl: Agent sprzedaży
+    phone: "+420 777 123 456"
+    email: info@pozemky-radun.cz
+
+  secondary:
+    name: Marie Svobodová
+    role:
+      cs: Asistentka
+      en: Assistant
+      pl: Asystentka
+    phone: "+420 777 987 654"
+    email: marie@pozemky-radun.cz

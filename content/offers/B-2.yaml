@@ -1,0 +1,57 @@
+id: B-2
+status: discounted
+featured: true
+
+slug:
+  cs: B-2
+  en: B-2
+  pl: B-2
+
+size_sqm: 1200
+price_per_sqm: 2700
+price_total: 3240000
+
+discount:
+  active: true
+  percentage: 10
+  old_price_total: 3600000
+
+map_position:
+  x: 300
+  y: 150
+  label: "B-2"
+
+title:
+  cs: Sleva 10% - Pozemek u potoka
+  en: 10% Discount - Plot by the stream
+  pl: Rabat 10% - Działka przy potoku
+
+description:
+  cs: |
+    Prostorný pozemek o rozloze 1200 m² v blízkosti potoka.
+    Ideální pro stavbu rodinného domu s velkou zahradou.
+    Klidná lokalita s rychlým přístupem do centra obce.
+  en: |
+    Spacious plot of 1200 m² near a stream.
+    Ideal for building a family home with a large garden.
+    Quiet location with quick access to the village center.
+  pl: |
+    Przestronna działka o powierzchni 1200 m² w pobliżu potoku.
+    Idealna do budowy domu rodzinnego z dużym ogrodem.
+    Spokojna lokalizacja z szybkim dostępem do centrum wsi.
+
+features:
+  utilities:
+    - electricity
+    - water
+    - sewage
+  access: asphalt
+  zoning: residential
+
+images:
+  - /images/plots/B-2/main.svg
+
+contact: default
+
+created: "2025-01-05"
+updated: "2025-01-14"

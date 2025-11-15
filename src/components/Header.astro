@@ -1,0 +1,99 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { t, loadGlobalConfig, type Language, type OfferSlugs } from '../utils/i18n';
+
+interface Props {
+  lang: Language;
+  currentPath: string;
+  offerSlugs?: OfferSlugs;
+}
+
+const { lang, currentPath, offerSlugs } = Astro.props;
+const global = loadGlobalConfig();
+---
+
+<header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo/Site Name -->
+      <a href={`/${lang}/`} class="flex items-center space-x-2">
+        <span class="text-2xl font-serif font-bold text-primary dark:text-primary-dark">
+          Pozemky Raduň
+        </span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a
+          href={`/${lang}/`}
+          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+        >
+          {t('nav.home', lang)}
+        </a>
+        <a
+          href={`/${lang}/#offers`}
+          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+        >
+          {t('nav.offers', lang)}
+        </a>
+        <a
+          href={`/${lang}/#contact`}
+          class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
+        >
+          {t('nav.contact', lang)}
+        </a>
+      </nav>
+
+      <!-- Controls -->
+      <div class="flex items-center space-x-4">
+        <LanguageSwitcher lang={lang} currentPath={currentPath} offerSlugs={offerSlugs} />
+        <ThemeToggle lang={lang} />
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+          aria-label="Menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+    <div class="px-4 py-3 space-y-3">
+      <a
+        href={`/${lang}/`}
+        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+      >
+        {t('nav.home', lang)}
+      </a>
+      <a
+        href={`/${lang}/#offers`}
+        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+      >
+        {t('nav.offers', lang)}
+      </a>
+      <a
+        href={`/${lang}/#contact`}
+        class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark"
+      >
+        {t('nav.contact', lang)}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

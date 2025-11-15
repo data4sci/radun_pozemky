@@ -1,0 +1,92 @@
+---
+import Layout from '../../components/Layout.astro';
+import OfferCard from '../../components/OfferCard.astro';
+import ContactBox from '../../components/ContactBox.astro';
+import { t, loadGlobalConfig, type Language } from '../../utils/i18n';
+import { getActiveOffers } from '../../utils/offers';
+
+const lang: Language = 'pl';
+const global = loadGlobalConfig();
+const offers = getActiveOffers();
+---
+
+<Layout lang={lang}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-gray-800 dark:to-gray-900 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
+        Pozemky Raduň
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+        {global.site.hero_claim[lang]}
+      </p>
+      <a href="#offers" class="btn-primary text-lg">
+        {t('general.cta_view_offers', lang)}
+      </a>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center">
+        <img
+          src={global.map.image}
+          alt={global.map.alt[lang]}
+          class="max-w-full h-auto mx-auto rounded-lg shadow-md"
+          width={global.map.width}
+          height={global.map.height}
+        />
+        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          {global.map.alt[lang]}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Raduň Section -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-serif font-bold text-center mb-8 text-gray-900 dark:text-white">
+        {t('general.about_village', lang)}
+      </h2>
+      <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+        {global.site.about_radun[lang].split('\n').map((paragraph: string) => (
+          paragraph.trim() && <p>{paragraph.trim()}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section id="offers" class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-serif font-bold text-center mb-12 text-gray-900 dark:text-white">
+        {t('nav.offers', lang)}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {offers.map((offer) => (
+          <OfferCard offer={offer} lang={lang} />
+        ))}
+      </div>
+
+      {offers.length === 0 && (
+        <div class="text-center py-12 text-gray-500 dark:text-gray-400">
+          <p>Brak dostępnych ofert.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Contact Section - HIDDEN, kept for future use
+  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-serif font-bold text-center mb-8 text-gray-900 dark:text-white">
+        {t('nav.contact', lang)}
+      </h2>
+      <ContactBox lang={lang} />
+    </div>
+  </section>
+  -->
+</Layout>

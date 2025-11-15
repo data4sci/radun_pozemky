@@ -1,0 +1,49 @@
+site:
+  url: https://pozemky-radun.cz
+  default_language: cs
+  languages:
+    - cs
+    - en
+    - pl
+
+  title:
+    cs: Pozemky Raduň - Stavební parcely na prodej
+    en: Raduň Plots - Building Land for Sale
+    pl: Działki Raduň - Działki budowlane na sprzedaż
+
+  hero_claim:
+    cs: Váš vysněný domov začíná zde
+    en: Your dream home starts here
+    pl: Twój wymarzony dom zaczyna się tutaj
+
+  about_radun:
+    cs: |
+      Obec Raduň leží v malebné krajině Hlučínska, pouhých 15 km od Opavy.
+      S necelými 1000 obyvateli nabízí klidné bydlení v přírodě s výbornou
+      dostupností do města. V obci najdete základní občanskou vybavenost
+      včetně obchodu, restaurace a mateřské školy.
+    en: |
+      The village of Raduň is located in the picturesque Hlučín region,
+      just 15 km from Opava. With less than 1000 inhabitants, it offers
+      peaceful living in nature with excellent access to the city.
+      The village has basic amenities including a shop, restaurant, and kindergarten.
+    pl: |
+      Wieś Raduň położona jest w malowniczym regionie Hlučína,
+      zaledwie 15 km od Opawy. Z niecałym tysiącem mieszkańców oferuje
+      spokojne życie na łonie natury z doskonałym dostępem do miasta.
+      W wiosce znajduje się podstawowa infrastruktura, w tym sklep, restauracja i przedszkole.
+
+map:
+  image: /images/map/radun-map.svg
+  alt:
+    cs: Mapa pozemků v Raduni
+    en: Map of plots in Raduň
+    pl: Mapa działek w Raduniu
+  width: 1200
+  height: 800
+
+settings:
+  show_inactive_in_list: false
+  enable_dark_mode: true
+  currency: CZK
+  date_format: DD.MM.YYYY
