@@ -2,7 +2,6 @@
 import { t, formatPrice, offerPathSegment, type Language } from '../utils/i18n';
 import type { Offer } from '../utils/offers';
 import Badge from './Badge.astro';
-import Button from './Button.astro';
 
 interface Props {
   offer: Offer;
@@ -38,9 +37,10 @@ const detailUrl = `/${lang}/${offerPathSegment[lang]}/${offer.slug[lang]}/`;
 const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'inactive';
 ---
 
-<article
+<a
+  href={detailUrl}
   class:list={[
-    'card card-hover group',
+    'card card-hover group block cursor-pointer',
     isReservedOrInactive && 'opacity-60'
   ]}
 >
@@ -110,7 +110,7 @@ const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'in
     <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
 
     <!-- Price -->
-    <div class="mb-6">
+    <div>
       <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
         {t('offer.total_price', lang)}
       </div>
@@ -129,13 +129,5 @@ const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'in
         </div>
       )}
     </div>
-
-    <!-- CTA -->
-    <Button href={detailUrl} variant="primary" fullWidth>
-      {t('offer.view_details', lang)}
-      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </Button>
   </div>
-</article>
+</a>
