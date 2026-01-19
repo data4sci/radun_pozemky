@@ -1,0 +1,62 @@
+id: A-12
+status: discounted
+featured: true
+
+slug:
+  cs: A-12
+  en: A-12
+  pl: A-12
+
+size_sqm: 830
+price_per_sqm: 5000
+price_total: 3984000
+
+discount:
+  active: true
+  percentage: 4
+  old_price_total: 4150000
+
+map_position:
+  x: 150
+  y: 200
+  label: "A-12"
+
+title:
+  cs: První ze série stavebních pozemků u příjezdové komunikace
+  en: The first in a series of building plots by the access road
+  pl: Pierwsza z serii działek budowlanych przy drodze dojazdowej
+
+description:
+  cs: |
+    Krásný rovinatý pozemek o rozměrech cca 28m x 30m a rozloze 830 m² na okraji obce Raduň na ulici Polní.
+    Pozemek sousedí se sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) na západní straně a s dalším stavebním pozemkem na severní straně.
+    Inženýrské sítě jsou dostupné na hranici pozemku (eletřina) nebo v příjezdové komunikaci (voda, kanalizace).
+  en: |
+    Beautiful flat plot measuring approximately 28m x 30m and covering an area of 830 m² at the edge of Raduň village on Polní street.
+    The plot borders an orchard [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) to the west and another building plot to the north.
+    Utilities are available at the plot boundary (electricity) or in the access road (water, sewage).
+  pl: |
+    Piękna płaska działka o wymiarach około 28m x 30m i powierzchni 830 m² na skraju wsi Raduň przy ulicy Polní.
+    Działka graniczy z sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) od strony zachodniej oraz z inną działką budowlaną od strony północnej.
+    Media są dostępne na granicy działki (prąd) lub na drodze dojazdowej (woda, kanalizacja).
+
+features:
+  utilities:
+    - electricity
+    - water
+    - sewage
+  access: asphalt
+  zoning: residential
+
+images:
+  - /images/plots/A-12/12-1.jpg
+  - /images/plots/A-12/12-2.jpg
+  - /images/plots/A-12/12-3.png
+  - /images/plots/A-12/12-4.png
+  - /images/plots/A-12/12-5.png
+  - /images/plots/A-12/12-6.png
+
+contact: default
+
+created: "2025-01-19"
+updated: "2025-01-19"

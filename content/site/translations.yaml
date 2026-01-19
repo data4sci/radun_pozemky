@@ -12,9 +12,9 @@ nav:
     en: Contact
     pl: Kontakt
   back_to_offers:
-    cs: "← Zpět na nabídku"
-    en: "← Back to offers"
-    pl: "← Wróć do ofert"
+    cs: "Zpět na nabídku"
+    en: "Back to offers"
+    pl: "Wróć do ofert"
 
 status:
   active:
