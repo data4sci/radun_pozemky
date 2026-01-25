@@ -139,3 +139,75 @@ general:
     cs: O Raduni
     en: About Raduň village
     pl: O Raduniu
+
+# Trust indicators (homepage)
+trust:
+  quiet_location:
+    title:
+      cs: Klidná lokalita
+      en: Quiet Location
+      pl: Spokojna lokalizacja
+    description:
+      cs: Nedaleko Opavy v klidné obci
+      en: Near Opava in a quiet village
+      pl: Niedaleko Opawy w spokojnej wsi
+  complete_utilities:
+    title:
+      cs: Kompletní sítě
+      en: Complete Utilities
+      pl: Kompletne media
+    description:
+      cs: Všechny inženýrské sítě na hranici
+      en: All utilities at the boundary
+      pl: Wszystkie media na granicy
+  transparent_pricing:
+    title:
+      cs: Transparentní ceny
+      en: Transparent Pricing
+      pl: Przejrzyste ceny
+    description:
+      cs: Žádné skryté poplatky
+      en: No hidden fees
+      pl: Brak ukrytych opłat
+
+# Offer detail page
+detail:
+  description:
+    cs: Popis
+    en: Description
+    pl: Opis
+  summary:
+    cs: Souhrn
+    en: Summary
+    pl: Podsumowanie
+  utilities_title:
+    cs: Inženýrské sítě
+    en: Engineering Networks
+    pl: Sieci inżynierskie
+  additional_info:
+    cs: Další informace
+    en: Additional Information
+    pl: Dodatkowe informacje
+  view_more_offers:
+    cs: Zobrazit další nabídky
+    en: View more offers
+    pl: Zobacz więcej ofert
+
+# Footer
+footer:
+  tagline:
+    cs: Stavební pozemky v klidném Raduni nedaleko Opavy.
+    en: Building plots in the quiet village of Raduň near Opava.
+    pl: Działki budowlane w spokojnym Raduniu niedaleko Opawy.
+  quick_links:
+    cs: Rychlé odkazy
+    en: Quick Links
+    pl: Szybkie linki
+  resources:
+    cs: Zdroje
+    en: Resources
+    pl: Zasoby
+  all_rights_reserved:
+    cs: Všechna práva vyhrazena.
+    en: All rights reserved.
+    pl: Wszelkie prawa zastrzeżone.

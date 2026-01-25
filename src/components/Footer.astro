@@ -39,15 +39,7 @@ const currentYear = new Date().getFullYear();
           </span>
         </div>
         <p class="text-sm text-gray-600 dark:text-gray-400 max-w-xs">
-          {lang === "cs" && "Stavební pozemky v klidném Raduni nedaleko Opavy."}
-          {
-            lang === "en" &&
-              "Building plots in the quiet village of Raduň near Opava."
-          }
-          {
-            lang === "pl" &&
-              "Działki budowlane w spokojnym Raduniu niedaleko Opawy."
-          }
+          {t("footer.tagline", lang)}
         </p>
       </div>
 
@@ -56,9 +48,7 @@ const currentYear = new Date().getFullYear();
         <h4
           class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
         >
-          {lang === "cs" && "Rychlé odkazy"}
-          {lang === "en" && "Quick Links"}
-          {lang === "pl" && "Szybkie linki"}
+          {t("footer.quick_links", lang)}
         </h4>
         <ul class="space-y-3">
           <li>
@@ -93,9 +83,7 @@ const currentYear = new Date().getFullYear();
         <h4
           class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4"
         >
-          {lang === "cs" && "Zdroje"}
-          {lang === "en" && "Resources"}
-          {lang === "pl" && "Zasoby"}
+          {t("footer.resources", lang)}
         </h4>
         <ul class="space-y-3">
           <li>
@@ -122,10 +110,7 @@ const currentYear = new Date().getFullYear();
     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          &copy; {currentYear} Pozemky Raduň.
-          {lang === "cs" && "Všechna práva vyhrazena."}
-          {lang === "en" && "All rights reserved."}
-          {lang === "pl" && "Wszelkie prawa zastrzeżone."}
+          &copy; {currentYear} Pozemky Raduň. {t("footer.all_rights_reserved", lang)}
         </p>
         <div
           class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400"

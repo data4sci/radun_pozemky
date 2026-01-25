@@ -101,7 +101,7 @@ const badge = statusBadge();
 
         <!-- Description -->
         <div class="card p-6 md:p-8">
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Opis</h2>
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t('detail.description', lang)}</h2>
           <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
             {offer.description[lang].split('\n').map((paragraph) => (
               paragraph.trim() && <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
@@ -117,7 +117,7 @@ const badge = statusBadge();
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Sieci inżynierskie
+                {t('detail.utilities_title', lang)}
               </h3>
               <div class="space-y-3">
                 {offer.features.utilities.map((utility) => (
@@ -127,7 +127,7 @@ const badge = statusBadge();
             </div>
             <div class="space-y-4">
               <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Dodatkowe informacje
+                {t('detail.additional_info', lang)}
               </h3>
               <div class="space-y-3">
                 <FeatureItem
@@ -151,7 +151,7 @@ const badge = statusBadge();
         <div class="sticky top-24 space-y-6">
           <!-- Price box -->
           <div class="card p-6">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Podsumowanie</h3>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">{t('detail.summary', lang)}</h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
                 <span class="text-gray-600 dark:text-gray-400">{t('offer.size', lang)}</span>
@@ -204,7 +204,7 @@ const badge = statusBadge();
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Zobacz więcej ofert
+            {t('detail.view_more_offers', lang)}
           </Button>
         </div>
       </div>
