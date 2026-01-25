@@ -8,6 +8,7 @@ import ImageGallery from '../../../components/ImageGallery.astro';
 import FeatureItem from '../../../components/FeatureItem.astro';
 import { t, formatPrice, type Language } from '../../../utils/i18n';
 import { getAllOffers, type Offer } from '../../../utils/offers';
+import { renderMarkdown } from '../../../utils/markdown';
 
 export async function getStaticPaths() {
   const offers = getAllOffers();
@@ -102,11 +103,7 @@ const badge = statusBadge();
         <!-- Description -->
         <div class="card p-6 md:p-8">
           <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">{t('detail.description', lang)}</h2>
-          <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
-            {offer.description[lang].split('\n').map((paragraph) => (
-              paragraph.trim() && <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
-            ))}
-          </div>
+          <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300" set:html={renderMarkdown(offer.description[lang])} />
         </div>
 
         <!-- Features -->

@@ -165,6 +165,14 @@
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2
            dark:focus-visible:ring-offset-gray-950;
   }
+
+  /* Prose links styling */
+  .prose a {
+    @apply text-primary-600 dark:text-primary-400 underline decoration-primary-600/30 dark:decoration-primary-400/30
+           underline-offset-2 transition-colors duration-200
+           hover:text-primary-700 dark:hover:text-primary-300
+           hover:decoration-primary-700 dark:hover:decoration-primary-300;
+  }
 }
 
 @layer utilities {
