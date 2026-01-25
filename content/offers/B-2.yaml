@@ -22,26 +22,23 @@ map_position:
   label: "B-2"
 
 title:
-  cs: Pozemek u příjezdové cesty s inženýrskými sítěmi
-  en: Plot by the access road with utilities
-  pl: Działka przy drodze dojazdowej z mediami
+  cs: "Obdelníkový pozemek 570 m², sítě na hranici"
+  en: "Rectangular 570 m² plot, utilities at the boundary"
+  pl: "Prostokątna działka 570 m², media przy granicy"
 
 description:
   cs: |
-    Obdelníkový pozemek o rozloze 570 m² u příjezdové cesty.
-    Ideální pro stavbu rodinného domu s inženýrskými sítěmi.
-    Klidná lokalita s rychlým přístupem do centra obce a dojezdem do Opavy (8 min) a Ostravy (Poruba - 25 min).
-    Přes pozemek prochází vodovodní přivaděč SmVaK s ochranným pásmem 6m.
+    Obdélníkový pozemek o výměře 570 m² (cca 13 x 44 m) u příjezdové cesty.
+    Lokalita je klidná, s rychlým přístupem do obce; do Opavy je to přibližně 10 minut, do Ostravy zhruba 25 minut.
+    Upozornění: přes pozemek prochází vodovodní přivaděč SmVaK s ochranným pásmem 6 m (vhodné zohlednit v návrhu umístění stavby).
   en: |
-    Rectangular plot of 570 m² by the access road.
-    Ideal for building a family house with utilities.
-    Quiet location with quick access to the village center and commute to Opava (8 min) and Ostrava (Poruba - 25 min).
-    A SmVaK water conduit with a 6m protection zone runs through the plot.
+    A rectangular plot of 570 m² (approx. 13 x 44 m) by the access road.
+    The location is quiet, with quick access to the village; it's about 10 minutes to Opava and roughly 25 minutes to Ostrava.
+    Note: a SmVaK water main runs through the plot with a 6 m protection zone (consider this when planning building placement).
   pl: |
-    Prostokątna działka o powierzchni 570 m² przy drodze dojazdowej.
-    Idealna pod budowę domu rodzinnego z mediami.
-    Cicha lokalizacja z szybkim dostępem do centrum wsi oraz dojazdem do Opawy (8 min) i Ostrawy (Poruba - 25 min).
-    Przez działkę przebiega przewód wodny SmVaK z 6-metrową strefą ochronną.
+    Prostokątna działka o powierzchni 570 m² (ok. 13 x 44 m) przy drodze dojazdowej.
+    Lokalizacja jest spokojna, z szybkim dostępem do wsi; do Opawy to około 10 minut, a do Ostrawy około 25 minut.
+    Uwaga: przez działkę przebiega magistrala wodociągowa SmVaK z 6-metrową strefą ochronną (należy to uwzględnić przy planowaniu umiejscowenia budynku).
 
 features:
   utilities:

@@ -154,6 +154,12 @@ const badge = statusBadge();
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">{t('detail.summary', lang)}</h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
+                <span class="text-gray-600 dark:text-gray-400">{t('offer.plot_id', lang)}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">
+                  {offer.id}
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
                 <span class="text-gray-600 dark:text-gray-400">{t('offer.size', lang)}</span>
                 <span class="font-semibold text-gray-900 dark:text-white">
                   {offer.size_sqm.toLocaleString('cs-CZ')} m²

@@ -1,5 +1,5 @@
 id: A-1
-status: inactive
+status: inactive # jenom ukázkový příklad
 featured: false
 
 slug:
@@ -22,23 +22,23 @@ map_position:
   label: "A-1"
 
 title:
-  cs: Stavební pozemek u lesa
-  en: Building plot by the forest
-  pl: Działka budowlana przy lesie
+  cs: "Stavební pozemek 850 m² u lesa"
+  en: "850 m² building plot by the forest"
+  pl: "Działka budowlana 850 m² przy lesie"
 
 description:
   cs: |
-    Krásný rovinatý pozemek o rozloze 850 m² na okraji Raduně.
-    Pozemek se nachází v klidné lokalitě s výhledem do přírody.
-    Veškeré inženýrské sítě jsou dostupné na hranici pozemku.
+    Rovinatý pozemek o výměře 850 m² na okraji Raduně – v přímém kontaktu s přírodou.
+    Ideální pro klidné rodinné bydlení s výhledem do zeleně.
+    Inženýrské sítě jsou dostupné na hranici pozemku (dle specifikace nabídky).
   en: |
-    Beautiful flat plot of 850 m² at the edge of Raduň village.
-    The plot is located in a quiet area with nature views.
-    All utilities are available at the plot boundary.
+    A flat 850 m² plot on the edge of Raduň village, right next to nature.
+    A great fit for a quiet family home with green views.
+    Utility connections are available at the plot boundary (see listing details).
   pl: |
-    Piękna płaska działka o powierzchni 850 m² na skraju Radunia.
-    Działka znajduje się w spokojnej okolicy z widokiem na przyrodę.
-    Wszystkie media dostępne przy granicy działki.
+    Płaska działka o powierzchni 850 m² na skraju Radunia, w sąsiedztwie zieleni.
+    Dobra propozycja pod spokojny dom rodzinny z widokiem na naturę.
+    Media dostępne przy granicy działki (zgodnie ze specyfikacją oferty).
 
 features:
   utilities:

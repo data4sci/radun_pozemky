@@ -23,23 +23,23 @@ map_position:
   label: "A-12"
 
 title:
-  cs: (A-12) První ze série stavebních pozemků u příjezdové komunikace
-  en: (A-12) The first in a series of building plots by the access road
-  pl: (A-12) Pierwsza z serii działek budowlanych przy drodze dojazdowej
+  cs: "Rovinatý pozemek 830 m² u příjezdové komunikace"
+  en: "Flat 830 m² plot by the access road"
+  pl: "Płaska działka 830 m² przy drodze dojazdowej"
 
 description:
   cs: |
-    Krásný rovinatý pozemek o rozměrech cca 28m x 30m a rozloze 830 m² na okraji Raduně na ulici Polní.
-    Pozemek sousedí se sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) na západní straně a s dalším stavebním pozemkem na severní straně.
-    Inženýrské sítě jsou dostupné na hranici pozemku (elektřina) nebo v příjezdové komunikaci (voda, kanalizace).
+    Rovinatý stavební pozemek o výměře 830 m² (cca 28 × 30 m) na okraji Raduně – ulice Polní.
+    Na západní straně sousedí se sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/), na severu navazuje další stavební parcela.
+    Inženýrské sítě jsou připravené v dosahu: elektřina na hranici pozemku, voda a kanalizace v příjezdové komunikaci.
   en: |
-    Beautiful flat plot measuring approximately 28m x 30m and covering an area of 830 m² at the edge of Raduň village on Polní street.
-    The plot borders an orchard [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) to the west and another building plot to the north.
-    Utilities are available at the plot boundary (electricity) or in the access road (water, sewage).
+    A flat building plot of 830 m² (approx. 28 × 30 m) on the edge of Raduň village, Polní street.
+    It borders an orchard [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) to the west and another building plot to the north.
+    Utility connections are within reach: electricity at the plot boundary, water and sewage in the access road.
   pl: |
-    Piękna płaska działka o wymiarach około 28m x 30m i powierzchni 830 m² na skraju Radunia przy ulicy Polní.
-    Działka graniczy z sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/) od strony zachodniej oraz z inną działką budowlaną od strony północnej.
-    Media są dostępne na granicy działki (prąd) lub na drodze dojazdowej (woda, kanalizacja).
+    Płaska działka budowlana o powierzchni 830 m² (ok. 28 × 30 m) na skraju Radunia, przy ul. Polní.
+    Od zachodu graniczy z sadem [Zahradnictví Raduň](https://www.zahradnictviradun.cz/), a od północy z inną działką budowlaną.
+    Media są w zasięgu: prąd przy granicy działki, woda i kanalizacja w drodze dojazdowej.
 
 features:
   utilities:

@@ -15,7 +15,7 @@ const offers = getActiveOffers();
   <!-- Hero Section -->
   <HeroSection
     title="Pozemky Raduň"
-    subtitle="Stavební pozemky v Raduni"
+    subtitle="Stavební pozemky u Opavy"
     description={global.site.hero_claim[lang]}
     primaryCta={{
       text: t("general.cta_view_offers", lang),
@@ -30,9 +30,9 @@ const offers = getActiveOffers();
   <!-- Map Section -->
   <Section background="default" padding="lg">
     <div class="text-center mb-12">
-      <h2 class="text-gray-900 dark:text-white mb-4">Mapa pozemků</h2>
+      <h2 class="text-gray-900 dark:text-white mb-4">Mapa lokality</h2>
       <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Prohlédněte si rozmístění jednotlivých pozemků v lokalitě
+        Prohlédněte si přehled pozemků v lokalitě a kliknutím mapu zvětšete
       </p>
     </div>
 
@@ -65,7 +65,7 @@ const offers = getActiveOffers();
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
               ></path>
             </svg>
-            <span>Klikněte pro zvětšení</span>
+            <span>Klikněte pro zvětšení mapy</span>
           </div>
         </div>
       </div>
@@ -254,7 +254,7 @@ const offers = getActiveOffers();
         {t("nav.offers", lang)}
       </h2>
       <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Vyberte si z našich stavebních pozemků
+        Vyberte si z aktuální nabídky stavebních pozemků
       </p>
     </div>
 
@@ -281,7 +281,7 @@ const offers = getActiveOffers();
             </svg>
           </div>
           <p class="text-gray-500 dark:text-gray-400">
-            Žádné aktivní nabídky k dispozici.
+            Aktuálně nemáme žádné aktivní nabídky.
           </p>
         </div>
       )

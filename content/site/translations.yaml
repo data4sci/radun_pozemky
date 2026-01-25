@@ -35,6 +35,10 @@ status:
     pl: Sprzedana
 
 offer:
+  plot_id:
+    cs: Kód nabídky
+    en: Offer Code
+    pl: Kod oferty
   size:
     cs: Velikost
     en: Size
@@ -56,7 +60,7 @@ offer:
     en: Contact seller
     pl: Skontaktuj się ze sprzedawcą
   not_available:
-    cs: Nabídka již není aktivní
+    cs: Tato nabídka už není aktivní
     en: This offer is no longer available
     pl: Ta oferta nie jest już dostępna
 
@@ -148,18 +152,18 @@ trust:
       en: Quiet Location
       pl: Spokojna lokalizacja
     description:
-      cs: Nedaleko Opavy v klidné obci
-      en: Near Opava in a quiet village
-      pl: Niedaleko Opawy w spokojnej wsi
+      cs: V zeleni, přitom jen 6–7 km od Opavy
+      en: Green surroundings, just 6–7 km from Opava
+      pl: Blisko natury, tylko 6–7 km od Opawy
   complete_utilities:
     title:
       cs: Kompletní sítě
       en: Complete Utilities
       pl: Kompletne media
     description:
-      cs: Všechny inženýrské sítě na hranici
-      en: All utilities at the boundary
-      pl: Wszystkie media na granicy
+      cs: Napojení sítí dle nabídky (elektřina, voda, kanalizace, plyn)
+      en: Utility connections per listing (electricity, water, sewage, gas)
+      pl: Media zgodnie z ofertą (prąd, woda, kanalizacja, gaz)
   transparent_pricing:
     title:
       cs: Transparentní ceny
@@ -182,8 +186,8 @@ detail:
     pl: Podsumowanie
   utilities_title:
     cs: Inženýrské sítě
-    en: Engineering Networks
-    pl: Sieci inżynierskie
+    en: Utility connections
+    pl: Media
   additional_info:
     cs: Další informace
     en: Additional Information
@@ -196,9 +200,13 @@ detail:
 # Footer
 footer:
   tagline:
-    cs: Stavební pozemky v klidném Raduni nedaleko Opavy.
-    en: Building plots in the quiet village of Raduň near Opava.
-    pl: Działki budowlane w spokojnym Raduniu niedaleko Opawy.
+    cs: Stavební pozemky v Raduni – klidné bydlení v dojezdu Opavy i Ostravy.
+    en: Building plots in Raduň—quiet living within easy reach of Opava and Ostrava.
+    pl: Działki budowlane w Raduniu – spokojne miejsce blisko Opawy i Ostrawy.
+  location:
+    cs: Raduň u Opavy
+    en: Raduň (near Opava)
+    pl: Raduň koło Opawy
   quick_links:
     cs: Rychlé odkazy
     en: Quick Links

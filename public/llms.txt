@@ -25,26 +25,20 @@ All plots have:
 - /cs/ - Czech homepage
 - /en/ - English homepage
 - /pl/ - Polish homepage
-- /cs/nabidka/[slug] - Czech plot details
+- /cs/offer/[slug] - Czech plot details
 - /en/offer/[slug] - English plot details
-- /pl/oferta/[slug] - Polish plot details
-
-## Current Inventory
-Active plots: 3
-Price range: 2,500-3,000 CZK/m²
-Size range: 650-1,200 m²
+- /pl/offer/[slug] - Polish plot details
 
 ## About Raduň Village
-- Located 15 km from Opava city
-- Population: ~1000 inhabitants
-- Region: Hlučínsko, Moravian-Silesian Region
-- Amenities: shop, restaurant, kindergarten
-- Excellent transport connections
+- Located approx. 6–7 km from Opava and about 30 km from Ostrava
+- Population: ~1,200 inhabitants
+- Moravian-Silesian Region, Opava District
+- Known for the Raduň State Chateau and its park
+- Good transport connections (road + public transport to Opava)
 
 ## Contact
 Primary: info@pozemky-radun.cz
-Phone: +420 777 123 456
-Company: Reality Raduň s.r.o.
+Phone: +420 734 330 489
 
 ## Technical
 Static website built with Astro

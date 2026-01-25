@@ -7,36 +7,42 @@ site:
     - pl
 
   title:
-    cs: Pozemky Raduň - Stavební parcely na prodej
-    en: Raduň Plots - Building Land for Sale
-    pl: Działki Raduň - Działki budowlane na sprzedaż
+    cs: Pozemky Raduň u Opavy – stavební pozemky na prodej
+    en: Building Plots in Raduň (near Opava) – Land for Sale
+    pl: Działki budowlane w Raduniu (koło Opawy) – na sprzedaż
 
   hero_claim:
-    cs: Váš vysněný domov začíná zde
-    en: Your dream home starts here
-    pl: Twój wymarzony dom zaczyna się tutaj
+    cs: Klidná obec v dojezdu Opavy i Ostravy – vyberte si pozemek pro svůj rodinný dům.
+    en: A quiet village within easy reach of Opava and Ostrava—choose a plot for your family home.
+    pl: Spokojna okolica w zasięgu Opawy i Ostrawy – wybierz działkę pod dom.
 
   about_radun:
     cs: |
-      Obec Raduň leží v malebné krajině Hlučínska, pouhých 15 km od Opavy.
-      S necelými 1000 obyvateli nabízí klidné bydlení v přírodě s výbornou
-      dostupností do města. V obci najdete základní občanskou vybavenost
-      včetně obchodu, restaurace a mateřské školy.
+      Raduň je klidná obec v okrese Opava (Moravskoslezský kraj) – ideální pro ty, kteří chtějí bydlet v zeleni, ale mít město na dosah.
+      Do Opavy je to přibližně 6–7 km (cca 10 minut), do Ostravy zhruba 30 km (okolo 25 minut).
+
+      Obec je známá státním zámkem se zámeckým parkem a příjemným okolím pro procházky i cyklistiku. Zázemí doplňuje MHD spojení do Opavy a rychlé napojení na hlavní tahy v regionu.
+
+      V Raduni je základní infrastruktura pro každodenní život (obecní úřad, zastávky, škola/školka); kompletní služby a nákupy jsou pohodlně dostupné v Opavě.
     en: |
-      The village of Raduň is located in the picturesque Hlučín region,
-      just 15 km from Opava. With less than 1000 inhabitants, it offers
-      peaceful living in nature with excellent access to the city.
-      The village has basic amenities including a shop, restaurant, and kindergarten.
+      Raduň is a quiet village in the Opava District (Moravian-Silesian Region)—a great choice if you want greenery and privacy without losing easy access to the city.
+      Opava is about 6–7 km away (roughly 10 minutes by car), and Ostrava is around 30 km away (about 25 minutes).
+
+      The area is known for the Raduň State Chateau and its park, plus plenty of nearby routes for walks and cycling. Public transport links to Opava and convenient road connections make everyday commuting straightforward.
+
+      The village offers essential local infrastructure (municipal services, stops, school/kindergarten), with full services and shopping available in nearby Opava.
     pl: |
-      Wieś Raduň położona jest w malowniczym regionie Hlučína,
-      zaledwie 15 km od Opawy. Z niecałym tysiącem mieszkańców oferuje
-      spokojne życie na łonie natury z doskonałym dostępem do miasta.
-      W wiosce znajduje się podstawowa infrastruktura, w tym sklep, restauracja i przedszkole.
+      Raduň to spokojna miejscowość w powiecie opawskim (woj. morawsko-śląskie) – dobra propozycja dla osób, które chcą mieszkać blisko natury, a jednocześnie mieć miasto „pod ręką”.
+      Do Opawy jest ok. 6–7 km (około 10 minut), a do Ostrawy ok. 30 km (około 25 minut).
+
+      Okolica słynie z państwowego zamku w Raduniu i parku zamkowego oraz tras spacerowych i rowerowych. Dodatkowym atutem jest komunikacja publiczna do Opawy i wygodne połączenia drogowe w regionie.
+
+      Na miejscu dostępna jest podstawowa infrastruktura (usługi gminne, przystanki, szkoła/przedszkole), a pełna oferta usług i zakupów znajduje się w pobliskiej Opawie.
 
 map:
   image: /images/map/map.png
   alt:
-    cs: Mapa pozemků v Raduni
+    cs: Mapa stavebních pozemků v Raduni
     en: Map of plots in Raduň
     pl: Mapa działek w Raduniu
   width: 1200
