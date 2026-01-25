@@ -1,6 +1,6 @@
 # Pozemky Radun - Web pro prodej pozemků
 
-Statický vícejazyčný web pro prodej stavebních pozemků v obci Raduň.
+Statický vícejazyčný web pro prodej stavebních pozemků v Raduni.
 
 ## Technologie
 
