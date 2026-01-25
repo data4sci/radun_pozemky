@@ -17,25 +17,31 @@ Real estate listing website for land plots. Built with **Astro 5** (static site 
 ## Architecture
 
 ### Content-Driven Design
+
 All property data lives in YAML files, not a database:
+
 - `/content/offers/*.yaml` - Individual property listings (A-1, A-12, B-1, etc.)
 - `/content/site/global.yaml` - Site config, hero text, map settings
 - `/content/site/translations.yaml` - UI strings in all languages
 - `/content/site/contacts.yaml` - Contact information
 
 ### Internationalization (i18n)
+
 Three parallel language routes: `/cs/`, `/en/`, `/pl/`
+
 - Each property has language-specific slugs in its YAML
 - Translation keys use dot notation (e.g., `nav.home`, `offer.price`)
 - `src/utils/i18n.ts` handles translation loading and URL helpers
 - `src/utils/offers.ts` manages property data with in-memory caching
 
 ### Page Structure
+
 - `/src/pages/[lang]/index.astro` - Homepage per language
 - `/src/pages/[lang]/offer/[slug].astro` - Property detail (dynamic route)
 - `/src/pages/index.astro` - Root redirect to `/cs/`
 
 ### Key Components
+
 - `Layout.astro` - Main wrapper with header, footer, SEO meta
 - `OfferCard.astro` - Property card with image, price, status badge
 - `ImageGallery.astro` - Lightbox gallery with keyboard navigation
@@ -73,6 +79,7 @@ images: ["/images/plots/A-12/1.jpg", ...]
 ## Tailwind Configuration
 
 Custom theme in `tailwind.config.mjs`:
+
 - Dark mode: class-based toggle (persisted in localStorage)
 - Primary color: green palette
 - Accent color: orange palette
