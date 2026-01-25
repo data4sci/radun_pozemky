@@ -1,4 +1,6 @@
-# Pozemky Radun - Web pro prodej pozemků
+# Pozemky Raduň - Web pro prodej pozemků
+
+# Pozemky Raduň - Web pro prodej pozemků
 
 Statický vícejazyčný web pro prodej stavebních pozemků v Raduni.
 
@@ -155,6 +157,7 @@ updated: 2024-01-15
 
 - 3 jazykové mutace (CS/EN/PL)
 - Dynamické URL routing: `/cs/`, `/en/`, `/pl/`
+- Dynamické směrování URL: `/cs/`, `/en/`, `/pl/`
 - Přepínač jazyků v hlavičce
 - Formátování cen podle jazyka
 
@@ -171,6 +174,7 @@ updated: 2024-01-15
 
 - Světlý/tmavý režim
 - Persistence nastavení v localStorage
+- Ukládání nastavení do localStorage (persistence)
 - Vlastní barevná paleta (zelená/oranžová)
 
 ### SEO & Přístupnost
