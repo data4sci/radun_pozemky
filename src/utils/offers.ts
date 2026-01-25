@@ -14,6 +14,7 @@ export interface Offer {
   discount: {
     active: boolean;
     percentage: number;
+    old_price_per_sqm: number | null;
     old_price_total: number | null;
   };
   map_position: {

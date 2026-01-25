@@ -8,12 +8,13 @@ slug:
   pl: A-12
 
 size_sqm: 830
-price_per_sqm: 5000
+price_per_sqm: 4800
 price_total: 3984000
 
 discount:
   active: true
   percentage: 4
+  old_price_per_sqm: 5000
   old_price_total: 4150000
 
 map_position:
@@ -22,9 +23,9 @@ map_position:
   label: "A-12"
 
 title:
-  cs: První ze série stavebních pozemků u příjezdové komunikace
-  en: The first in a series of building plots by the access road
-  pl: Pierwsza z serii działek budowlanych przy drodze dojazdowej
+  cs: (A-12) První ze série stavebních pozemků u příjezdové komunikace
+  en: (A-12) The first in a series of building plots by the access road
+  pl: (A-12) Pierwsza z serii działek budowlanych przy drodze dojazdowej
 
 description:
   cs: |

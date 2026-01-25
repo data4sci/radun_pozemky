@@ -161,9 +161,20 @@ const badge = statusBadge();
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-gray-600 dark:text-gray-400">{t('offer.price_per_sqm', lang)}</span>
-                <span class="font-semibold text-gray-900 dark:text-white">
-                  {formatPrice(offer.price_per_sqm, lang)}
-                </span>
+                {offer.discount.active && offer.discount.old_price_per_sqm ? (
+                  <span class="text-right">
+                    <span class="text-gray-400 line-through text-xs block">
+                      {formatPrice(offer.discount.old_price_per_sqm, lang)}
+                    </span>
+                    <span class="font-semibold text-red-600 dark:text-red-400">
+                      {formatPrice(offer.price_per_sqm, lang)}
+                    </span>
+                  </span>
+                ) : (
+                  <span class="font-semibold text-gray-900 dark:text-white">
+                    {formatPrice(offer.price_per_sqm, lang)}
+                  </span>
+                )}
               </div>
               <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
                 <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">{t('offer.total_price', lang)}</div>

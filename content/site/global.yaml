@@ -34,7 +34,7 @@ site:
       W wiosce znajduje się podstawowa infrastruktura, w tym sklep, restauracja i przedszkole.
 
 map:
-  image: /images/map/radun-map.svg
+  image: /images/map/map.png
   alt:
     cs: Mapa pozemků v Raduni
     en: Map of plots in Raduň

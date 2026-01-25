@@ -1,20 +1,20 @@
 id: B-2
-status: discounted
-featured: true
+status: reserved
+featured: false
 
 slug:
   cs: B-2
   en: B-2
   pl: B-2
 
-size_sqm: 1200
-price_per_sqm: 2700
-price_total: 3240000
+size_sqm: 570
+price_per_sqm: 5000
+price_total: 2850000
 
 discount:
-  active: true
-  percentage: 10
-  old_price_total: 3600000
+  active: false
+  percentage: 0
+  old_price_total: null
 
 map_position:
   x: 300
@@ -22,23 +22,26 @@ map_position:
   label: "B-2"
 
 title:
-  cs: Sleva 10% - Pozemek u potoka
-  en: 10% Discount - Plot by the stream
-  pl: Rabat 10% - Działka przy potoku
+  cs: Pozemek u příjezdové cesty s inženýrskými sítěmi
+  en: Plot by the access road with utilities
+  pl: Działka przy drodze dojazdowej z mediami
 
 description:
   cs: |
-    Prostorný pozemek o rozloze 1200 m² v blízkosti potoka.
-    Ideální pro stavbu rodinného domu s velkou zahradou.
-    Klidná lokalita s rychlým přístupem do centra obce.
+    Obdelníkový pozemek o rozloze 570 m² u příjezdové cesty.
+    Ideální pro stavbu rodinného domu s inženýrskými sítěmi.
+    Klidná lokalita s rychlým přístupem do centra obce a dojezdem do Opavy (8 min) a Ostravy (Poruba - 25 min).
+    Přes pozemek procházi vodovodní přivaděč SmVaK s ochranným pásmem 6m.
   en: |
-    Spacious plot of 1200 m² near a stream.
-    Ideal for building a family home with a large garden.
-    Quiet location with quick access to the village center.
+    Rectangular plot of 570 m² by the access road.
+    Ideal for building a family house with utilities.
+    Quiet location with quick access to the village center and commute to Opava (8 min) and Ostrava (Poruba - 25 min).
+    A SmVaK water conduit with a 6m protection zone runs through the plot.
   pl: |
-    Przestronna działka o powierzchni 1200 m² w pobliżu potoku.
-    Idealna do budowy domu rodzinnego z dużym ogrodem.
-    Spokojna lokalizacja z szybkim dostępem do centrum wsi.
+    Prostokątna działka o powierzchni 570 m² przy drodze dojazdowej.
+    Idealna pod budowę domu rodzinnego z mediami.
+    Cicha lokalizacja z szybkim dostępem do centrum wsi oraz dojazdem do Opawy (8 min) i Ostrawy (Poruba - 25 min).
+    Przez działkę przebiega przewód wodny SmVaK z 6-metrową strefą ochronną.
 
 features:
   utilities:
@@ -49,9 +52,9 @@ features:
   zoning: residential
 
 images:
-  - /images/plots/B-2/main.svg
-  - /images/plots/B-2/view.svg
-  - /images/plots/B-2/stream.svg
+  - /images/plots/B-2/2-1.jpg
+  - /images/plots/B-2/2-2.jpg
+  - /images/plots/B-2/2-3.jpg
 
 contact: default
 

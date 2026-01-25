@@ -100,9 +100,20 @@ const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'in
           </svg>
           {t('offer.price_per_sqm', lang)}
         </span>
-        <span class="font-semibold text-gray-900 dark:text-white">
-          {formatPrice(offer.price_per_sqm, lang)}
-        </span>
+        {offer.discount.active && offer.discount.old_price_per_sqm ? (
+          <span class="text-right">
+            <span class="text-gray-400 line-through text-xs block">
+              {formatPrice(offer.discount.old_price_per_sqm, lang)}
+            </span>
+            <span class="font-semibold text-red-600 dark:text-red-400">
+              {formatPrice(offer.price_per_sqm, lang)}
+            </span>
+          </span>
+        ) : (
+          <span class="font-semibold text-gray-900 dark:text-white">
+            {formatPrice(offer.price_per_sqm, lang)}
+          </span>
+        )}
       </div>
     </div>
 
