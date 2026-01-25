@@ -1,12 +1,12 @@
 ---
-import Layout from '../../components/Layout.astro';
-import HeroSection from '../../components/HeroSection.astro';
-import Section from '../../components/Section.astro';
-import OfferCard from '../../components/OfferCard.astro';
-import { t, loadGlobalConfig, type Language } from '../../utils/i18n';
-import { getActiveOffers } from '../../utils/offers';
+import Layout from "../../components/Layout.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import Section from "../../components/Section.astro";
+import OfferCard from "../../components/OfferCard.astro";
+import { t, loadGlobalConfig, type Language } from "../../utils/i18n";
+import { getActiveOffers } from "../../utils/offers";
 
-const lang: Language = 'en';
+const lang: Language = "en";
 const global = loadGlobalConfig();
 const offers = getActiveOffers();
 ---
@@ -18,12 +18,12 @@ const offers = getActiveOffers();
     subtitle="Building plots near Opava"
     description={global.site.hero_claim[lang]}
     primaryCta={{
-      text: t('general.cta_view_offers', lang),
-      href: '#offers'
+      text: t("general.cta_view_offers", lang),
+      href: "#offers",
     }}
     secondaryCta={{
-      text: t('general.about_village', lang),
-      href: '#about'
+      text: t("general.about_village", lang),
+      href: "#about",
     }}
   />
 
@@ -46,10 +46,24 @@ const offers = getActiveOffers();
           width={global.map.width}
           height={global.map.height}
         />
-        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
-          <div class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-gray-900 dark:text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
+        >
+          <div
+            class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-gray-900 dark:text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+              ></path>
             </svg>
             <span>Click to enlarge the map</span>
           </div>
@@ -59,14 +73,26 @@ const offers = getActiveOffers();
   </Section>
 
   <!-- Map Lightbox -->
-  <div id="map-lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+  <div
+    id="map-lightbox"
+    class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4"
+  >
     <button
       id="map-lightbox-close"
       class="absolute top-4 right-4 p-2 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-all z-10"
       aria-label="Close"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
     <img
@@ -78,85 +104,144 @@ const offers = getActiveOffers();
   </div>
 
   <script>
-    const mapContainer = document.getElementById('map-container');
-    const mapLightbox = document.getElementById('map-lightbox');
-    const mapLightboxClose = document.getElementById('map-lightbox-close');
+    const mapContainer = document.getElementById("map-container");
+    const mapLightbox = document.getElementById("map-lightbox");
+    const mapLightboxClose = document.getElementById("map-lightbox-close");
 
     if (mapContainer && mapLightbox && mapLightboxClose) {
-      mapContainer.addEventListener('click', () => {
-        mapLightbox.classList.remove('hidden');
-        mapLightbox.classList.add('flex');
-        document.body.style.overflow = 'hidden';
+      mapContainer.addEventListener("click", () => {
+        mapLightbox.classList.remove("hidden");
+        mapLightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
       });
 
       const closeLightbox = () => {
-        mapLightbox.classList.add('hidden');
-        mapLightbox.classList.remove('flex');
-        document.body.style.overflow = '';
+        mapLightbox.classList.add("hidden");
+        mapLightbox.classList.remove("flex");
+        document.body.style.overflow = "";
       };
 
-      mapLightboxClose.addEventListener('click', closeLightbox);
-      mapLightbox.addEventListener('click', (e) => {
+      mapLightboxClose.addEventListener("click", closeLightbox);
+      mapLightbox.addEventListener("click", (e) => {
         if (e.target === mapLightbox) closeLightbox();
       });
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !mapLightbox.classList.contains('hidden')) {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !mapLightbox.classList.contains("hidden")) {
           closeLightbox();
         }
       });
     }
   </script>
 
-  <!-- About Radun Section -->
+  <!-- About Raduň Section -->
   <Section id="about" background="muted" padding="lg">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-gray-900 dark:text-white mb-4">
-          {t('general.about_village', lang)}
+          {t("general.about_village", lang)}
         </h2>
         <div class="w-24 h-1 bg-primary-500 mx-auto rounded-full"></div>
       </div>
 
       <div class="card p-8 md:p-12">
-        <div class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
-          {global.site.about_radun[lang].split('\n').map((paragraph: string) => (
-            paragraph.trim() && <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
-          ))}
+        <div
+          class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
+        >
+          {
+            global.site.about_radun[lang]
+              .split("\n")
+              .map(
+                (paragraph: string) =>
+                  paragraph.trim() && (
+                    <p class="mb-4 last:mb-0">{paragraph.trim()}</p>
+                  ),
+              )
+          }
         </div>
       </div>
 
       <!-- Trust indicators -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
         <div class="text-center">
-          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          <div
+            class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">{t('trust.quiet_location.title', lang)}</h4>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{t('trust.quiet_location.description', lang)}</p>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+            {t("trust.quiet_location.title", lang)}
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {t("trust.quiet_location.description", lang)}
+          </p>
         </div>
 
         <div class="text-center">
-          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div
+            class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">{t('trust.complete_utilities.title', lang)}</h4>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{t('trust.complete_utilities.description', lang)}</p>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+            {t("trust.complete_utilities.title", lang)}
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {t("trust.complete_utilities.description", lang)}
+          </p>
         </div>
 
         <div class="text-center">
-          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div
+            class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">{t('trust.transparent_pricing.title', lang)}</h4>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{t('trust.transparent_pricing.description', lang)}</p>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+            {t("trust.transparent_pricing.title", lang)}
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {t("trust.transparent_pricing.description", lang)}
+          </p>
         </div>
       </div>
     </div>
@@ -166,7 +251,7 @@ const offers = getActiveOffers();
   <Section id="offers" background="default" padding="lg">
     <div class="text-center mb-12">
       <h2 class="text-gray-900 dark:text-white mb-4">
-        {t('nav.offers', lang)}
+        {t("nav.offers", lang)}
       </h2>
       <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Choose from the currently available building plots
@@ -174,20 +259,32 @@ const offers = getActiveOffers();
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {offers.map((offer) => (
-        <OfferCard offer={offer} lang={lang} />
-      ))}
+      {offers.map((offer) => <OfferCard offer={offer} lang={lang} />)}
     </div>
 
-    {offers.length === 0 && (
-      <div class="text-center py-16">
-        <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-          </svg>
+    {
+      offers.length === 0 && (
+        <div class="text-center py-16">
+          <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg
+              class="w-8 h-8 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+              />
+            </svg>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400">
+            No active offers at the moment.
+          </p>
         </div>
-        <p class="text-gray-500 dark:text-gray-400">No active offers at the moment.</p>
-      </div>
-    )}
+      )
+    }
   </Section>
 </Layout>

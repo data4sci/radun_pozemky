@@ -1,4 +1,4 @@
-# Pozemky Radun - Web pro prodej pozemků
+# Pozemky Raduň - Web pro prodej pozemků
 
 Statický vícejazyčný web pro prodej stavebních pozemků v Raduni.
 
