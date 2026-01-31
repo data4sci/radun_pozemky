@@ -211,6 +211,7 @@ updated: 2024-01-15
 1. Push kódu do `main` branch
 2. GitHub Actions automaticky nasadí web
 3. Web dostupný na <https://radun-pozemky.cz>
+4.
 
 ### CI/CD Pipeline
 
