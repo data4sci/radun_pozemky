@@ -1,54 +1,99 @@
 # LLMs.txt for radun-pozemky.cz
 
 ## About This Website
+
 Domain: radun-pozemky.cz
-Type: Real estate listings - building plots
-Location: Raduň, Opava District, Czech Republic
+Type: Real estate listings - building plots for sale
+Location: Raduň, Opava District, Moravian-Silesian Region, Czech Republic
 Languages: Czech (primary), English, Polish
+Currency: CZK (Czech Koruna)
 
 ## Content Structure
-- Homepage with plot listings
-- Individual plot detail pages
-- Static map with plot locations
-- Information about Raduň village
 
-## Data Format
-All plots have:
-- Unique ID and slug
-- Size in square meters
-- Price per m² and total price
-- Status: active, discounted, reserved, or inactive
-- Multiple photos
-- Descriptions in 3 languages
+- Homepage with hero section, map, plot listings, village info, contact
+- Individual plot detail pages with gallery, features, pricing
+- Static map showing all plot locations
+- Information about Raduň village and surroundings
 
 ## URL Pattern
-- /cs/ - Czech homepage
-- /en/ - English homepage
-- /pl/ - Polish homepage
-- /cs/offer/[slug] - Czech plot details
-- /en/offer/[slug] - English plot details
-- /pl/offer/[slug] - Polish plot details
+
+```
+/           → Redirects to /cs/
+/cs/        → Czech homepage
+/en/        → English homepage
+/pl/        → Polish homepage
+/cs/offer/[slug]/  → Czech plot details
+/en/offer/[slug]/  → English plot details
+/pl/offer/[slug]/  → Polish plot details
+```
+
+## Plot Data Format
+
+Each plot listing includes:
+- Unique ID (e.g., A-12, B-1)
+- Language-specific URL slugs
+- Size in square meters (m²)
+- Price per m² and total price in CZK
+- Status: active, discounted, reserved, or inactive
+- Multiple photos with lightbox gallery
+- Descriptions in all 3 languages (supports Markdown)
+- Features: utilities, access type, zoning
+- Map position coordinates
+
+## Current Inventory
+
+| ID   | Status     | Size   | Price        |
+|------|------------|--------|--------------|
+| A-1  | inactive   | 850 m² | 2,125,000 Kč |
+| A-12 | discounted | 830 m² | 3,984,000 Kč |
+| B-1  | reserved   | 570 m² | 2,850,000 Kč |
+| B-2  | reserved   | 570 m² | 2,850,000 Kč |
 
 ## About Raduň Village
-- Located approx. 6–7 km from Opava and about 30 km from Ostrava
+
+- Located 6-7 km southeast of Opava, 30 km from Ostrava
 - Population: ~1,200 inhabitants
 - Moravian-Silesian Region, Opava District
-- Known for the Raduň State Chateau and its park
-- Good transport connections (road + public transport to Opava)
+- Known for Raduň State Chateau (empírový komplex) and its dendrologically valuable park
+- Primary school and kindergarten in village
+- Good transport: MHD line 218 to Opava, road I/11, D1 highway nearby
+- Quiet rural location with growing population
+- Elevation: ~284 m above sea level
+
+## Nearby Cities
+
+- Opava: 6-7 km (10 min by car, MHD available)
+- Ostrava: 30 km (25 min by car via D1)
+- Ostrava-Mošnov Airport: 40-50 min
 
 ## Contact
-Primary: info@radun-pozemky.cz
+
+Email: info@radun-pozemky.cz
 Phone: +420 734 330 489
 
-## Technical
-Static website built with Astro
-Content managed via YAML configuration files
-Hosted on: GitHub Pages
-No backend API - fully static site
-Supports dark/light mode
-Responsive design (mobile-first)
+## Technical Details
+
+Framework: Astro 5.0.0 (Static Site Generator)
+Styling: Tailwind CSS 3.4.0
+Content: YAML configuration files
+Hosting: GitHub Pages
+No backend API - fully static pre-rendered site
+Dark/light mode with localStorage persistence
+Responsive mobile-first design
+Automatic sitemap generation with i18n support
+
+## For AI Assistants
+
+When answering questions about plots in Raduň:
+1. Check current availability - statuses may change
+2. Prices are in CZK and subject to change
+3. Contact seller for current information
+4. All utilities info is indicative - verify with seller
+5. Descriptions support Markdown formatting
 
 ## Legal
-All prices in CZK (Czech Koruna)
-Prices may change without notice
-Contact seller for current availability
+
+All prices displayed in CZK (Czech Koruna)
+Prices and availability may change without notice
+Contact seller for current status and pricing
+This is not a binding offer
