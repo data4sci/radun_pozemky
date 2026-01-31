@@ -3,13 +3,14 @@ import Layout from "../../components/Layout.astro";
 import HeroSection from "../../components/HeroSection.astro";
 import Section from "../../components/Section.astro";
 import OfferCard from "../../components/OfferCard.astro";
-import { t, loadGlobalConfig, type Language } from "../../utils/i18n";
+import { t, loadGlobalConfig, withBase, type Language } from "../../utils/i18n";
 import { getActiveOffers } from "../../utils/offers";
 import { renderMarkdown } from "../../utils/markdown";
 
 const lang: Language = "cs";
 const global = loadGlobalConfig();
 const offers = getActiveOffers();
+const mapImage = withBase(global.map.image);
 ---
 
 <Layout lang={lang}>
@@ -41,7 +42,7 @@ const offers = getActiveOffers();
       <div class="relative group cursor-pointer" id="map-container">
         <img
           id="map-image"
-          src={global.map.image}
+          src={mapImage}
           alt={global.map.alt[lang]}
           class="w-full h-auto rounded-xl group-hover:opacity-95 transition-opacity"
           width={global.map.width}
@@ -98,7 +99,7 @@ const offers = getActiveOffers();
     </button>
     <img
       id="map-lightbox-image"
-      src={global.map.image}
+      src={mapImage}
       alt={global.map.alt[lang]}
       class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
     />

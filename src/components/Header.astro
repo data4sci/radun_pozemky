@@ -1,7 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { t, loadGlobalConfig, type Language, type OfferSlugs } from '../utils/i18n';
+import { t, loadGlobalConfig, withBase, type Language, type OfferSlugs } from '../utils/i18n';
 
 interface Props {
   lang: Language;
@@ -18,7 +18,7 @@ const global = loadGlobalConfig();
     <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo/Site Name -->
       <a
-        href={`/${lang}/`}
+        href={withBase(`/${lang}/`)}
         class="flex items-center gap-2 group"
       >
         <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center group-hover:bg-primary-700 transition-colors">

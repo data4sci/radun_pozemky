@@ -1,5 +1,5 @@
 ---
-import { t, formatPrice, offerPathSegment, type Language } from '../utils/i18n';
+import { t, formatPrice, getOfferUrl, withBase, type Language } from '../utils/i18n';
 import type { Offer } from '../utils/offers';
 import Badge from './Badge.astro';
 
@@ -33,7 +33,7 @@ const statusBadge = () => {
 };
 
 const badge = statusBadge();
-const detailUrl = `/${lang}/${offerPathSegment[lang]}/${offer.slug[lang]}/`;
+const detailUrl = getOfferUrl(lang, offer.slug[lang]);
 const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'inactive';
 ---
 
@@ -48,7 +48,7 @@ const isReservedOrInactive = offer.status === 'reserved' || offer.status === 'in
   <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden">
     {offer.images[0] ? (
       <img
-        src={offer.images[0]}
+        src={withBase(offer.images[0])}
         alt={offer.title[lang]}
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         loading="lazy"

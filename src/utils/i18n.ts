@@ -19,6 +19,20 @@ export const offerPathSegment: Record<Language, string> = {
   pl: 'offer'
 };
 
+// Helper to add base URL to paths
+export function withBase(path: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  // Remove trailing slash from base and leading slash from path if present
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  const cleanPath = path.startsWith('/') ? path : '/' + path;
+  return cleanBase + cleanPath;
+}
+
+// Helper to generate offer detail URL
+export function getOfferUrl(lang: Language, slug: string): string {
+  return withBase(`/${lang}/${offerPathSegment[lang]}/${slug}/`);
+}
+
 export function getLangFromUrl(url: URL): Language {
   const [, lang] = url.pathname.split('/');
   if (languages.includes(lang as Language)) {

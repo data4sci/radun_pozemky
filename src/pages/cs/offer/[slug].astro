@@ -6,7 +6,7 @@ import Button from '../../../components/Button.astro';
 import ContactBox from '../../../components/ContactBox.astro';
 import ImageGallery from '../../../components/ImageGallery.astro';
 import FeatureItem from '../../../components/FeatureItem.astro';
-import { t, formatPrice, type Language } from '../../../utils/i18n';
+import { t, formatPrice, withBase, type Language } from '../../../utils/i18n';
 import { getAllOffers, type Offer } from '../../../utils/offers';
 import { renderMarkdown } from '../../../utils/markdown';
 
@@ -22,7 +22,7 @@ const lang: Language = 'cs';
 const { offer } = Astro.props as { offer: Offer };
 
 if (!offer) {
-  return Astro.redirect('/cs/');
+  return Astro.redirect(withBase('/cs/'));
 }
 
 const statusBadge = () => {
@@ -59,7 +59,7 @@ const badge = statusBadge();
   <Section background="default" padding="sm">
     <div class="mb-8">
       <a
-        href={`/${lang}/`}
+        href={withBase(`/${lang}/`)}
         class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,7 +98,7 @@ const badge = statusBadge();
         </div>
 
         <!-- Gallery -->
-        <ImageGallery images={offer.images} alt={offer.title[lang]} />
+        <ImageGallery images={offer.images.map(img => withBase(img))} alt={offer.title[lang]} />
 
         <!-- Description -->
         <div class="card p-6 md:p-8">
@@ -203,7 +203,7 @@ const badge = statusBadge();
           <ContactBox lang={lang} contactId={offer.contact} />
 
           <!-- Back button -->
-          <Button href={`/${lang}/#offers`} variant="secondary" fullWidth>
+          <Button href={withBase(`/${lang}/#offers`)} variant="secondary" fullWidth>
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
