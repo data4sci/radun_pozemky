@@ -1,10 +1,10 @@
 # Product Requirements Document (PRD)
 
-## Web „Pozemky Raduň" - pozemky-radun.cz
+## Web „Pozemky Raduň" - radun-pozemky.cz
 
 **Verze:** 2.0 FINAL  
 **Datum:** 14.11.2025  
-**Doména:** pozemky-radun.cz
+**Doména:** radun-pozemky.cz
 
 ---
 
@@ -369,7 +369,7 @@ price_total: 2576000
 ```yaml
 # Metadata webu
 site:
-  url: https://pozemky-radun.cz
+  url: https://radun-pozemky.cz
   default_language: cs
   languages:
     - cs
@@ -434,7 +434,7 @@ contacts:
       en: Sales Agent
       pl: Agent sprzedaży
     phone: +420 777 123 456
-    email: info@pozemky-radun.cz
+    email: info@radun-pozemky.cz
     
   secondary:
     name: Marie Svobodová
@@ -443,7 +443,7 @@ contacts:
       en: Assistant
       pl: Asystentka
     phone: +420 777 987 654
-    email: marie@pozemky-radun.cz
+    email: marie@radun-pozemky.cz
 ```
 
 **content/site/translations.yaml:**
@@ -751,7 +751,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://pozemky-radun.cz',
+  site: 'https://radun-pozemky.cz',
   integrations: [
     tailwind(),
     sitemap({
@@ -860,9 +860,9 @@ export default {
 ```html
 <title>Pozemky Raduň - Stavební parcely na prodej</title>
 <meta name="description" content="Nabízíme stavební pozemky v obci Raduň...">
-<link rel="canonical" href="https://pozemky-radun.cz/cs/">
-<link rel="alternate" hreflang="en" href="https://pozemky-radun.cz/en/">
-<link rel="alternate" hreflang="pl" href="https://pozemky-radun.cz/pl/">
+<link rel="canonical" href="https://radun-pozemky.cz/cs/">
+<link rel="alternate" hreflang="en" href="https://radun-pozemky.cz/en/">
+<link rel="alternate" hreflang="pl" href="https://radun-pozemky.cz/pl/">
 ```
 
 **Open Graph:**
@@ -870,7 +870,7 @@ export default {
 ```html
 <meta property="og:title" content="Pozemky Raduň">
 <meta property="og:description" content="Stavební parcely...">
-<meta property="og:image" content="https://pozemky-radun.cz/images/og-image.jpg">
+<meta property="og:image" content="https://radun-pozemky.cz/images/og-image.jpg">
 <meta property="og:type" content="website">
 ```
 
@@ -895,10 +895,10 @@ export default {
 ### 8.2 LLMs.txt specifikace
 
 ```txt
-# LLMs.txt for pozemky-radun.cz
+# LLMs.txt for radun-pozemky.cz
 
 ## About This Website
-Domain: pozemky-radun.cz
+Domain: radun-pozemky.cz
 Type: Real estate listings - building plots
 Location: Raduň, Opava District, Czech Republic
 Languages: Czech (primary), English, Polish
@@ -929,7 +929,7 @@ Price range: 1,500-3,000 CZK/m²
 Size range: 650-1,200 m²
 
 ## Contact
-Primary: info@pozemky-radun.cz
+Primary: info@radun-pozemky.cz
 Phone: +420 777 123 456
 
 ## Technical
@@ -1378,4 +1378,4 @@ import { Image } from '@astrojs/image/components';
 
 ---
 
-*Tento PRD představuje kompletní technickou specifikaci pro implementaci webu pozemky-radun.cz pomocí moderního Astro + Tailwind stacku s důrazem na výkon, SEO a snadnou správu obsahu.*
+*Tento PRD představuje kompletní technickou specifikaci pro implementaci webu radun-pozemky.cz pomocí moderního Astro + Tailwind stacku s důrazem na výkon, SEO a snadnou správu obsahu.*

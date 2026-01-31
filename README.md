@@ -4,8 +4,8 @@ Statický vícejazyčný web pro prodej stavebních pozemků v Raduni.
 
 ## Technologie
 
-- **Framework:** Astro 5.x (SSG - Static Site Generator)
-- **Styling:** Tailwind CSS 3.4.x
+- **Framework:** Astro 5.0.0 (SSG - Static Site Generator)
+- **Styling:** Tailwind CSS 3.4.0
 - **Jazyk:** TypeScript
 - **Hosting:** GitHub Pages (CI/CD via GitHub Actions)
 - **Jazyky webu:** Čeština (CS), Angličtina (EN), Polština (PL)
@@ -32,7 +32,7 @@ npm run preview
 ├── content/                    # YAML konfigurační soubory
 │   ├── offers/                 # Nabídky pozemků (A-1.yaml, B-1.yaml, ...)
 │   └── site/                   # Globální nastavení
-│       ├── global.yaml         # Konfigurace webu, hero text
+│       ├── global.yaml         # Konfigurace webu, hero text, mapa
 │       ├── translations.yaml   # Překlady UI prvků
 │       └── contacts.yaml       # Kontaktní informace
 │
@@ -40,8 +40,9 @@ npm run preview
 │   ├── favicon.svg
 │   ├── robots.txt
 │   ├── llms.txt                # Konfigurace pro AI vyhledávače
+│   ├── .nojekyll               # Vypnutí Jekyll na GitHub Pages
 │   └── images/
-│       ├── map/                # Mapa pozemků
+│       ├── map/                # Mapa pozemků (map.png)
 │       └── plots/              # Galerie obrázků (složka pro každý pozemek)
 │
 ├── src/
@@ -49,17 +50,17 @@ npm run preview
 │   │   ├── Layout.astro        # Hlavní layout wrapper
 │   │   ├── Header.astro        # Sticky header s navigací
 │   │   ├── Footer.astro        # Patička
+│   │   ├── Head.astro          # SEO meta tagy a hreflang
 │   │   ├── HeroSection.astro   # Hero sekce s CTA
 │   │   ├── OfferCard.astro     # Karta nabídky pozemku
 │   │   ├── ImageGallery.astro  # Galerie s lightboxem
 │   │   ├── ContactBox.astro    # Kontaktní informace
 │   │   ├── LanguageSwitcher.astro  # Přepínač jazyků
 │   │   ├── ThemeToggle.astro   # Přepínač světlý/tmavý režim
-│   │   ├── Head.astro          # SEO meta tagy
-│   │   ├── Button.astro        # Tlačítko
-│   │   ├── Badge.astro         # Stavové štítky
+│   │   ├── Button.astro        # Tlačítko (varianty: primary, accent, secondary, ghost)
+│   │   ├── Badge.astro         # Stavové štítky (sleva, rezervováno, prodáno)
 │   │   ├── Section.astro       # Obalová sekce
-│   │   └── FeatureItem.astro   # Položka vlastností pozemku
+│   │   └── FeatureItem.astro   # Položka vlastností pozemku s ikonou
 │   │
 │   ├── pages/                  # Stránky (routes)
 │   │   ├── index.astro         # Redirect na /cs/
@@ -78,7 +79,8 @@ npm run preview
 │   │
 │   └── utils/
 │       ├── i18n.ts             # Internacionalizace a překlady
-│       └── offers.ts           # Načítání a filtrování nabídek
+│       ├── offers.ts           # Načítání a filtrování nabídek
+│       └── markdown.ts         # Převod Markdown na HTML
 │
 ├── .github/
 │   └── workflows/
@@ -87,6 +89,9 @@ npm run preview
 ├── astro.config.mjs            # Konfigurace Astro
 ├── tailwind.config.mjs         # Konfigurace Tailwind CSS
 ├── tsconfig.json               # Konfigurace TypeScript
+├── CLAUDE.md                   # Instrukce pro Claude Code
+├── AGENTS.md                   # Instrukce pro AI agenty
+├── lokalita.md                 # Informace o lokalitě Raduň
 └── package.json                # Závislosti a skripty
 ```
 
@@ -119,9 +124,9 @@ title:
   en: Plot A-12
   pl: Działka A-12
 description:
-  cs: Popis pozemku v češtině...
-  en: Plot description in English...
-  pl: Opis działki po polsku...
+  cs: Popis pozemku v češtině... (podporuje Markdown)
+  en: Plot description in English... (supports Markdown)
+  pl: Opis działki po polsku... (obsługuje Markdown)
 features:
   utilities: [electricity, water, sewage, gas]
   access: asphalt | gravel | dirt
@@ -142,12 +147,12 @@ updated: 2024-01-15
 
 ### Změna stavu nabídky
 
-| Stav        | Hodnota `status` | Popis                                          |
-| ----------- | ---------------- | ---------------------------------------------- |
-| Aktivní     | `active`         | Běžná nabídka k prodeji                        |
-| Sleva       | `discounted`     | Zlevněná nabídka (nastavte `discount`)         |
-| Rezervováno | `reserved`       | Pozemek je rezervován                          |
-| Prodáno     | `inactive`       | Pozemek byl prodán nebo jako DRAFT (nezobrazuje se v seznamu)  |
+| Stav        | Hodnota `status` | Popis                                                              |
+| ----------- | ---------------- | ------------------------------------------------------------------ |
+| Aktivní     | `active`         | Běžná nabídka k prodeji                                            |
+| Sleva       | `discounted`     | Zlevněná nabídka (vyžaduje nastavení `discount`)                   |
+| Rezervováno | `reserved`       | Pozemek je rezervován                                              |
+| Neaktivní   | `inactive`       | Pozemek byl prodán nebo draft (nezobrazuje se v seznamu)           |
 
 ## Funkce
 
@@ -155,30 +160,27 @@ updated: 2024-01-15
 
 - 3 jazykové mutace (CS/EN/PL)
 - Dynamické URL routing: `/cs/`, `/en/`, `/pl/`
-- Dynamické směrování URL: `/cs/`, `/en/`, `/pl/`
 - Přepínač jazyků v hlavičce
-- Formátování cen podle jazyka
+- Formátování cen podle jazyka (CZK)
+- Hreflang meta tagy pro SEO
 
 ### Galerie obrázků
 
-- Lightbox modal s klávesovou navigací
-  - Šipky pro navigaci mezi obrázky
-  - Escape pro zavření
-- Kliknutí na hlavní obrázek pro zvětšení
+- Lightbox modal s overlay
+- Klávesová navigace (šipky, Escape)
 - Thumbnail grid pro rychlý náhled
 - Počítadlo obrázků
 
 ### Témata
 
-- Světlý/tmavý režim
+- Světlý/tmavý režim (class-based)
 - Persistence nastavení v localStorage
-- Ukládání nastavení do localStorage (persistence)
 - Vlastní barevná paleta (zelená/oranžová)
 
 ### SEO & Přístupnost
 
 - Meta tagy pro každou jazykovou verzi
-- Automatická generace sitemap
+- Automatická generace sitemap s i18n
 - Sémantické HTML
 - LLMs.txt pro AI vyhledávače
 - robots.txt
@@ -202,12 +204,13 @@ updated: 2024-01-15
 /pl/offer/[slug]/           → Detail v polštině
 ```
 
-## Deployment na GitHub Pages
+## Deployment
 
-1. Vytvořte GitHub repozitář
-2. Push kódu do `main` branch
-3. V Settings → Pages → Source: GitHub Actions
-4. GitHub Actions automaticky nasadí web
+### GitHub Pages
+
+1. Push kódu do `main` branch
+2. GitHub Actions automaticky nasadí web
+3. Web dostupný na <https://radun-pozemky.cz>
 
 ### CI/CD Pipeline
 
@@ -219,34 +222,54 @@ updated: 2024-01-15
 
 ### astro.config.mjs
 
-- Site URL: `https://pozemky-radun.cz`
+- Site URL: `https://radun-pozemky.cz`
 - Trailing slashes: zapnuto
+- Output: static
 - Integrace: Tailwind, Sitemap (s i18n)
 
 ### tailwind.config.mjs
 
 - Dark mode: class-based
-- Vlastní barvy (primary, accent)
-- Custom animace (fadeIn, slideUp)
-- Rozšířené stíny (soft, soft-lg)
+- Vlastní barvy: primary (zelená), accent (oranžová)
+- Custom animace: fadeIn, slideUp
+- Custom stíny: soft, soft-lg
+- Font: Inter
+
+### tsconfig.json
+
+- Path alias: `@/*` → `src/*`
 
 ## Utility funkce
 
 ### i18n.ts
 
-- `loadTranslations()` - Načtení překladů
+- `loadTranslations()` - Načtení překladů (s cache)
 - `loadGlobalConfig()` - Načtení konfigurace webu
 - `loadContacts()` - Načtení kontaktů
-- `t(key, lang)` - Překlad klíče
+- `t(key, lang)` - Překlad klíče (dot notation)
 - `formatPrice(price, lang)` - Formátování ceny
+- `getAlternateUrls()` - Alternativní URL pro jazyky
 
 ### offers.ts
 
-- `loadOffers()` - Načtení všech nabídek (s cachí)
-- `getActiveOffers()` - Filtrování aktivních nabídek
-- `getAllOffers()` - Všechny nabídky včetně prodaných
+- `loadOffers()` - Načtení všech nabídek (s cache)
+- `getActiveOffers()` - Aktivní nabídky (active, discounted, reserved)
+- `getAllOffers()` - Všechny nabídky včetně neaktivních
 - `getOfferBySlug(slug, lang)` - Vyhledání podle URL slug
 - `getOfferById(id)` - Vyhledání podle ID
+
+### markdown.ts
+
+- `renderMarkdown(text)` - Převod Markdown na HTML (GFM)
+
+## Aktuální nabídky
+
+| ID   | Status     | Rozloha | Cena         |
+| ---- | ---------- | ------- | ------------ |
+| A-1  | inactive   | 850 m²  | 2 125 000 Kč |
+| A-12 | discounted | 830 m²  | 3 984 000 Kč |
+| B-1  | reserved   | 570 m²  | 2 850 000 Kč |
+| B-2  | reserved   | 570 m²  | 2 850 000 Kč |
 
 ## Licence
 

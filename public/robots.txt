@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pozemky-radun.cz/sitemap-index.xml
+Sitemap: https://radun-pozemky.cz/sitemap-index.xml

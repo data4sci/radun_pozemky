@@ -1,7 +1,7 @@
-# LLMs.txt for pozemky-radun.cz
+# LLMs.txt for radun-pozemky.cz
 
 ## About This Website
-Domain: pozemky-radun.cz
+Domain: radun-pozemky.cz
 Type: Real estate listings - building plots
 Location: Raduň, Opava District, Czech Republic
 Languages: Czech (primary), English, Polish
@@ -37,7 +37,7 @@ All plots have:
 - Good transport connections (road + public transport to Opava)
 
 ## Contact
-Primary: info@pozemky-radun.cz
+Primary: info@radun-pozemky.cz
 Phone: +420 734 330 489
 
 ## Technical
