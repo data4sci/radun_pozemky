@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://data4sci.github.io',
-  base: '/radun_pozemky/',
+  site: 'https://radun-pozemky.cz',
+  base: '/',
   integrations: [
     tailwind(),
     sitemap({
