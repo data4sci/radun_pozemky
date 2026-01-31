@@ -16,9 +16,13 @@ const currentYear = new Date().getFullYear();
     <!-- Bottom bar -->
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-sm text-gray-500 dark:text-gray-400">
-        &copy; {currentYear} Pozemky Raduň. {t("footer.all_rights_reserved", lang)}
+        &copy; {currentYear} - {t("footer.all_rights_reserved", lang)}
       </p>
-      <a href="mailto:info@pozemky-radun.cz" class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">info@pozemky-radun.cz</a>
+      <a
+        href="mailto:info@pozemky-radun.cz"
+        class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+        >info@pozemky-radun.cz</a
+      >
       <div
         class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400"
       >
